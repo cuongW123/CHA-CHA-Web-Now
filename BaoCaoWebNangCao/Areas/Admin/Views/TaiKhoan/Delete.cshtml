@@ -1,0 +1,34 @@
+﻿@model BaoCaoWebNangCao.Models.TAIKHOAN
+@{
+    ViewBag.Title = "Xóa Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Bạn Chắc Chắn Xóa Tài Khoản</h2>
+<form action="@Url.Action("Delete","TaiKhoan",new {area="Admin",id=Model.ID})" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <table class="table">
+        <tr>
+            <th>Tên Đăng Nhập</th>
+            <td>@Model.TENDANGNHAP</td>
+        </tr>
+        <tr>
+            <th>Mật Khẩu</th>
+            <td>@Model.MATKHAU</td>
+        </tr>
+        <tr>
+            <th>Loại Tài Khoản</th>
+            <td>@Model.LOAITAIKHOAN</td>
+        </tr>
+        <tr>
+            <th>Tên Người Dùng</th>
+            <td>@Model.TENNGUOIDUNG</td>
+        </tr>
+        <tr>
+            <img src="@Model.HINHANH" style="width:100px; height:100px" />
+        </tr>
+    </table>
+    <button type="submit" name="id" class="btn btn-danger">Xóa </button>
+    <a href="@Url.Action("Index", "TaiKhoan", new{  area="Admin"})" class="btn btn-success">Trở về</a>
+</form>

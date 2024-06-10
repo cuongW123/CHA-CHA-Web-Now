@@ -1,0 +1,39 @@
+﻿@model BaoCaoWebNangCao.Models.CONGTHUC
+
+@{
+    ViewBag.Title = "Xóa Công Thức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Delete Công Thức</h2>
+<form action="@Url.Action("Delete","CongThuc",new {area="Admin",id=Model.ID})" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <table class="table">
+        <tr>
+            <th>Tên Danh Mục</th>
+            @if (Model.DANHMUCCONGTHUC != null)
+            {
+                <td>@Model.DANHMUCCONGTHUC.TENDANHMUC</td>
+            }
+        </tr>
+        <tr>
+            <th>Tên Công Thức</th>
+            <td>@Model.TENCONGTHUC</td>
+        </tr>
+        <tr>
+            <img src="@Model.HINHANH" style="width:100px; height:100px" />
+        </tr>
+        <tr>
+            <th>Nội Dung</th>
+            <td>@Model.NOIDUNG</td>
+        </tr>
+        <tr>
+            <th>Nội Dung Phụ</th>
+            <td>@Model.NOIDUNGPHU</td>
+        </tr>
+    </table>
+    <button type="submit" name="id" class="btn btn-danger">Xóa </button>
+    <a href="@Url.Action("Index", "CongThuc", new{  area="Admin"})" class="btn btn-success">Trở về</a>
+</form>
+

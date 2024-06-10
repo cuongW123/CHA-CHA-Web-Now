@@ -1,0 +1,45 @@
+﻿@model List<BaoCaoWebNangCao.Models.CONGTHUC> 
+@{
+    ViewBag.Title = "Công Thức Pha Chế";
+    Layout = "~/Areas/User/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container_fullwidth">
+    <form class="d-flex flex-row align-items-center flex-wrap" action="@Url.Action("Index", "CongThuc", new {area= "User"})" method="post">
+        <div>
+            <lable  for="search" class="mx-2 my-1" style="margin: 20px; font-size: 20px; color:orangered"><b>Tìm Kiếm</b></lable>
+            <input style="margin:20px" type="search" class="form-control w-auto" id="search" name="search" placeholder="Tên công thức" />
+            <button style="margin:10px 20px" type="submit" class="btn btn-primary mx-2">Tìm Kiếm</button>
+        </div>
+    </form>
+        <div class="container">
+            <div class="hot-products">
+                <h3 class="title"> Danh Sách <strong>Công Thức</strong></h3>
+
+                @*chinh sua tai khoan*@
+                <a href="@Url.Action("Index","TaiKhoan", new {area = "User", id = Session["id"] })">TaiKhoan</a>
+                @*<div class="control"><a id="prev_hot" class="prev" href="#">&lt;</a><a id="next_hot" class="next" href="#">&gt;</a></div>*@
+                @*công thức*@
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <form class="d-flex flex-row align-items-center flex-wrap" action="@Url.Action("AddFavourite", "CongThuc", new {area= "User"})" method="post">
+                        <input type="hidden" name="idcongthuc" value="@item.ID" />
+                        <input type="hidden" name="idtaikhoan" value="@Session["id"]" />
+                        <div class="col-md-3 col-sm-6">
+                            <div class="products">
+                                <div class="thumbnail"><a href="@Url.Action("Details", "CongThuc", new { area = "User", id = item.ID })"><img src="@item.HINHANH" style="width:220px; height:220px; object-fit:cover;border-radius:15px" alt="Hình Ảnh Công Thức" /></a></div>@*alt: hiển thị text thay thế khi ảnh lỗi hay chưa load kịp*@
+                                <div class="thumbnail price" style="border-style:dashed; border-color:brown; border-radius:15px;display:none">@item.NOIDUNGPHU</div>
+                                <h4 class="productname">@item.TENCONGTHUC</h4>
+                                <h4 class="price">@item.NGAYDANGTAI</h4>
+                                <div class="button_group">
+                                    <button  class="button wishlist" type="submit"><i  class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                 }
+                </div>
+            </div>
+        </div>
+</div>

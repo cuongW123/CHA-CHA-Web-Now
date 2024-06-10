@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+        <a href="#" class="navbar-brand">NGOCCUONG</a>
+        <div class="col-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")"> Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About", "Home")"> Giới Thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Contact", "Home")"> Liên Hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Info", "Home")"> Hồ sơ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Products")"> Sản phẩm</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-4 text-white">
+            @ViewBag.Message
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 text-white" style="background-color: #f80; min-height:1050px; padding:0">
+                <br /><a href="#" class="list-group-item text-white " style="background-color:transparent">Favourites</a><hr />
+                <a href="#" class="list-group-item text-white " style="background-color:transparent">Products</a><hr />
+                <a href="#" class="list-group-item text-white " style="background-color:transparent">Your Orders</a><hr />
+                @RenderSection("sideBar", required: false) @*required :false khi gặp file view nào không khai báo section mang tên giống như này code ko báo lỗi và chạy qua đoạn này*@
+
+            </div>
+            <div class="col-10" style="min-height:610px">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

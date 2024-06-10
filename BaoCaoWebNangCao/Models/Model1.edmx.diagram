@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="944f9d07b2334a84b4f5b53d7fb74893" Name="Diagram1">
+        <EntityTypeShape EntityType="WEBNANGCAOModel.CHITIETGIOHANG" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.CONGTHUC" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.DANHMUCCONGTHUC" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.DANHMUCSANPHAM" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.GIOHANG" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.SANPHAM" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.sysdiagram" Width="1.5" PointX="8.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__CHITIETGI__IDGIO__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__CHITIETGI__IDSAN__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__CONGTHUC__IDDANH__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__DANHMUCCO__IDTAI__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__SANPHAM__IDDANHM__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__GIOHANG__IDTAIKH__31EC6D26" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WEBNANGCAOModel.YEUTHICH" Width="1.5" PointX="7.5" PointY="0.75" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__YEUTHICH__IDCONG__03F0984C" />
+        <AssociationConnector Association="WEBNANGCAOModel.FK__YEUTHICH__IDTAIK__02FC7413" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

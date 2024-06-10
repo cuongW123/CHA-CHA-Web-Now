@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<style>
+    .font-black{
+        color:black;
+    }
+    .anh {
+        height: 50px;
+        width: 30px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow:0 2px 4px rgba(0, 0, 0, .4);
+        margin:0px 20px
+       
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Areas/Admin/Data/plugins/summernote/summernote-bs4.min.css">
+    @RenderSection("recipeCategoryStle", false)
+
+
+
+    @* màu main side bar ..\..\build\scss\_main-sidebar.scss*@
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <!--<div class="preloader flex-column justify-content-center align-items-center">
+          <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div>-->
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>                
+            </ul>
+
+            <!-- Right navbar links -->
+            
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside  class="main-sidebar sidebar-light-primary elevation-4 font-black">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                @*<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">*@
+                <div class="d-flex justify-content-center">
+                    <span class="brand-text">CHA CHA</span>
+                </div>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex font-black">
+                    <div class="anh">
+                        <img src="https://2sao.vietnamnetjsc.vn/images/2021/07/03/16/41/sao-han-1.jpg" class="img-circle elevation-2 justify-content-cemter d-flex" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Ngọc Cương</a>
+                    </div>
+                </div>
+
+                <!-- SidebarSearch Form -->
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2 font-black">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+                        <li class="nav-header"><b>QUẢN LÝ SẢN PHẨM</b></li>
+
+                        <li class="nav-item menu-open">
+
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-glass-martini-alt"></i>
+                                <p>
+                                    SẢN PHẨM
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách sản phẩm</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm sản phẩm mới</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-glass-cheers"></i>
+                                <p>
+                                    DANH MỤC SẢN PHẨM
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách danh mục</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm danh mục mới</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-header"><b>QUẢN LÝ CÔNG THỨC</b></li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-quran"></i>
+                                <p>
+                                    CÔNG THỨC
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách công thức</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm công thức mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-swatchbook"></i>
+                                <p>
+                                    DANH MỤC CÔNG THỨC
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách danh mục</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm danh mục mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-header"><b>TÀI KHOẢN</b></li>
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-users"></i>
+                                <p>
+                                    QUẢN LÝ TÀI KHOẢN
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách tài khoản</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm tài khoản mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-header"><b>BÁO CÁO - THỐNG KÊ</b></li>
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-receipt"></i>
+                                <p>
+                                    BÁO CÁO
+
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-chart-pie"></i>
+                                <p>
+                                    THỐNG KÊ
+
+                                </p>
+                            </a>
+
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div>
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">ĐỒ ÁN WEB NÂNG CAO</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b>1.2.3
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Areas/Admin/Data/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Areas/Admin/Data/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>$.widget.bridge('uibutton', $.ui.button)</script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Areas/Admin/Data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/Areas/Admin/Data/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/Areas/Admin/Data/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Areas/Admin/Data/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Areas/Admin/Data/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Areas/Admin/Data/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/Areas/Admin/Data/plugins/moment/moment.min.js"></script>
+    <script src="~/Areas/Admin/Data/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Areas/Admin/Data/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Areas/Admin/Data/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Areas/Admin/Data/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Areas/Admin/Data/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Areas/Admin/Data/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/Areas/Admin/Data/dist/js/pages/dashboard.js"></script>
+    @RenderSection("maJS", false)
+
+</body>
+</html>

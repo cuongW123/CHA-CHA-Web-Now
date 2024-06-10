@@ -1,0 +1,100 @@
+﻿@model BaoCaoWebNangCao.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Chi Tiết Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Chi Tiết Tài Khoản</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Đăng Nhập
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TENDANGNHAP)
+        </dd>
+        <br />
+
+        <dt>
+            Mật Khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU)
+        </dd>
+        <br />
+        <dt>
+            Loại Tài Khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAITAIKHOAN)
+        </dd>
+        <br />
+        <dt>
+            Tên Người Dùng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNGUOIDUNG)
+        </dd>
+        <br />
+        <dt>
+            Ngày Sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSINH)
+        </dd>
+        <br />
+        <dt>
+            Địa Chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+        <br />
+        <dt>
+            Số Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SODIENTHOAI)
+        </dd>
+        <br />
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+        <br />
+        <dt>
+            Giới Tính
+            @* @Html.DisplayNameFor(model => model.GIOITINH)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+        <br />
+        <dt>
+            <p>Ảnh Đại Diện</p>
+        </dt>
+        <dd>
+            <img src="@Model.HINHANH" style="width: 100px; height: 100px" />
+            @*@Html.DisplayFor(model => model.HINHANH)*@
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Trở Lại", "Index")
+</p>

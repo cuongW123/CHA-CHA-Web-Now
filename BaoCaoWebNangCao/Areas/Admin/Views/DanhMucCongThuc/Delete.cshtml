@@ -1,0 +1,26 @@
+﻿@model BaoCaoWebNangCao.Models.DANHMUCCONGTHUC
+
+
+@{
+    ViewBag.Title = "Delete Danh Mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Delete Danh Mục</h2>
+<form action="@Url.Action("Delete","DanhMucCongThuc",new {area="Admin",id=Model.ID})" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <table class="table">
+        <tr>
+            <th>Tên người dùng</th>
+            <td>@Model.TAIKHOAN.TENNGUOIDUNG</td>
+        </tr>
+        <tr>
+            <th>Tên Danh Mục</th>
+            <td>@Model.TENDANHMUC</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="@Url.Action("Index", "DanhMucCongThuc", new{  area="Admin"})" class="btn btn-success">Trở về</a>
+</form>
+

@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Tạo Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+<h2>Tạo Tài Khoản</h2>
+<form action="/admin/taikhoan/create" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="tendangnhap">Tên Đăng Nhập</label>
+            <input type="text" class="form-control" id="tendangnhap" name="tendangnhap" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="matkhau">Mật khẩu</label>
+            <input type="text" class="form-control" id="matkhau" name="matkhau" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="loaitaikhoan">Loại Tài Khoản</label>
+            <input type="text" class="form-control" id="loaitaikhoan" name="loaitaikhoan" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="tennguoidung">Tên Người Dùng</label>
+            <input type="text" class="form-control" id="tennguoidung" name="tennguoidung" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngaysinh">Ngày Sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" name="ngaysinh" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="sodienthoai">Số Điện Thoại</label>
+            <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="gioitinh">Giới Tính</label>
+            <div>
+                <input type="radio" name="gioitinh" value="Nam" />Nam
+                <input type="radio" name="gioitinh" value="Nữ" />Nữ
+                <input type="radio" name="gioitinh" value="Khác" />Khác
+            </div>
+            @*<input type="text" class="form-control" id="gioitinh" name="gioitinh" placeholder="" />*@
+        </div>
+        <div class="col-md-6">
+            <label for="hinhanh">Hình Ảnh</label>
+            @*<img src="https://img.meta.com.vn/Data/image/2022/05/14/meme-meo-bua-2.jpg" style="width: 100px; height: 100px" />*@
+            <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Thêm</button>
+    <a href="@Url.Action("Index","TaiKhoan",new {area="Admin"})" class="btn btn-danger">Trở về</a>
+</form>
+
+
+

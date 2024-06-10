@@ -1,0 +1,88 @@
+﻿@model BaoCaoWebNangCao.Models.CONGTHUC
+
+@{
+    ViewBag.Title = "Cập Nhật Công Thức ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+    BaoCaoWebNangCao.Models.WEBNANGCAOEntities1 db = new BaoCaoWebNangCao.Models.WEBNANGCAOEntities1();
+
+}
+
+<h2>Sửa công thức</h2>
+<form action="@Url.Action("Edit","CongThuc",new {area="Admin",id=Model.ID})" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <div class="row">
+
+        @*<div class="col-md-6">
+                <label for="iddanhmuc">ID Danh Mục</label>
+                <input type="text" class="form-control" id="iddanhmuc" name="iddanhmuc" placeholder="" value="@Model.IDDANHMUC" />
+            </div>*@
+        <div class="col-md-6">
+            <label for="iddanhmuc">ID Danh Mục</label>
+            <select class="form-control" id="iddanhmuc" name="iddanhmuc">
+                @try
+                {
+                    foreach (var item in db.DANHMUCCONGTHUCs.ToList())
+                    {
+                        if (Model.DANHMUCCONGTHUC != null)
+                        {
+                            <option value="@item.ID" @Html.Raw(item.ID == Model.IDDANHMUC ? "selected" : "")>@item.TENDANHMUC</option>
+                        }
+                    }
+                }catch(Exception e)
+                {
+                    Console.Write("",e);
+                }
+            </select>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="tencongthuc">Tên Công Thức</label>
+            <input type="text" class="form-control" id="tencongthuc" name="tencongthuc" placeholder="" value="@Model.TENCONGTHUC" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngaydangtai">Ngày Đăng Tải</label>
+            <input type="date" class="form-control" id="ngaydangtai" name="ngaydangtai" placeholder="" value="@Model.NGAYDANGTAI.Value.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-6">
+            <label for="nguyenlieu">Nguyên Liệu</label>
+            <input type="text" class="form-control" id="nguyenlieu" name="nguyenlieu" placeholder="" value="@Model.NGUYENLIEU" />
+        </div>
+        <div class="col-md-6">
+            <label for="hinhanh">Hình Ảnh</label>
+            <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" value="@Model.HINHANH" />
+
+        </div>
+        @*<div class="col-md-6">
+                <label for="noidung">Nội Dung</label>
+                <input type="text" class="form-control" id="noidung" name="noidung" placeholder="" value="@Model.NOIDUNG" />
+            </div>
+            <div class="col-md-6">
+                <label for="noidung">Nội Dung Phụ</label>
+                <input type="text" class="form-control" id="noidungphu" name="noidungphu" placeholder="" value="@Model.NOIDUNGPHU" />
+            </div>*@
+        <div class="col-md-12">
+            <label for="noidung">Nội Dung</label>
+
+            <textarea class="form-control" id="noidung" name="noidung">@Model.NOIDUNG</textarea>
+        </div>
+        <div class="col-md-12">
+            <label for="noidung">Nội Dung Phụ</label>
+
+            <textarea class="form-control" id="noidungphu" name="noidungphu">@Model.NOIDUNGPHU<</textarea>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Sửa</button>
+    <a href="/Admin/congthuc/index" class="btn btn-danger">Trở về</a>
+</form>
+
+@section maJS{
+    <script>
+        CKEDITOR.replace('noidung')
+        CKEDITOR.replace('noidungphu')
+
+    </script>
+}
+

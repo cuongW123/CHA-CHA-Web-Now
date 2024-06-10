@@ -1,0 +1,70 @@
+﻿@model BaoCaoWebNangCao.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Tài Khoản Của Tôi";
+    Layout = "~/Areas/User/Views/Shared/_LayoutUser.cshtml";
+    BaoCaoWebNangCao.Models.WEBNANGCAOEntities1 db = new BaoCaoWebNangCao.Models.WEBNANGCAOEntities1();
+}
+<link href="~/Areas/User/Data/css/taiKhoanCuaToi.css" rel="stylesheet" />
+
+
+<div class="container_fullwidth">
+    <!-- body -->
+    <div class="tong">
+        <!-- chua mon an yeu thich va mon an cua toi, trang ca nhan bên trên -->
+        <div class="canhan">
+            <div class="imgvstxt">
+                <div class="scdImg">
+                    <!-- chứa ảnh đại diện-->
+                    <br><img style="width: 100px; height: 100px; border-radius: 50px;" src="@Model.HINHANH" alt="Không tồn tại!">
+                </div>
+                <div class="txt">
+                    <!-- chứa txt -->
+                    <br><p style="font-weight:700" class="txtGreyH"><strong>@Model.TENNGUOIDUNG</strong></p>
+                    <p  class="txtGrey">@Model.DIACHI</p>
+                    <p  class="txtGrey">@Model.SODIENTHOAI</p>
+                    <p  class="txtGrey">@Model.EMAIL</p>
+                    <br>
+                </div>
+            </div><br>
+            <div style="margin: 10px 0 0 30px;">
+                <!-- thẻ a này để link của frm sửa tài khoản-->
+                <br><a href="@Url.Action("Edit", "TaiKhoan", new {area ="User", id=Model.ID})" class="btnMore" style="cursor: pointer;padding: 10px;border:1px;border-style: solid;border-color: black;border-radius:20px ;text-decoration: none;background-color:antiquewhite(146, 133, 117);">Thông tin</a>
+            </div>
+            <!--<div style="margin: 10px 0 0 30px;">-->
+                <!-- thẻ a này để link của frm đăng tải công thức -->
+                <!--<br><a href="" class="btnMore" style="cursor: pointer;padding: 10px;border:1px;border-style: solid;border-color: black;border-radius:20px ;text-decoration: none;background-color:antiquewhite(146, 133, 117);">Đăng tải công thức</a>
+            </div>-->
+            <div style="margin: 10px 0 0 30px;">
+             @*thẻ a này để link của đăng xuất *@
+            <br><a href="" class="btnMore" style="cursor: pointer;padding: 10px;border:1px;border-style: solid;border-color: black;border-radius:20px ;text-decoration: none;background-color:antiquewhite(146, 133, 117);">Đăng xuất</a>
+            </div>
+        </div>
+        <br><hr style="width: 80%; background-color: #797979;"><br><br>
+        <div>
+            <p style="font-size: 2.1em;font-weight:400; margin-left:30px ;" class="txtGreyH"><b style="color:orangered"> Công Thức<strong style="color:dimgrey"> Yêu Thích</strong></b></p><br> <br>
+        </div>
+        <div class="maybeLike" >
+            <!-- chứa 6 ảnh vs txt -->
+            @foreach (var item in db.YEUTHICHes.ToList())
+            {
+                         
+                    <div class="tphan">
+                        <a href="@Url.Action("Details", "CongThuc", new {area="User",id=item.IDCONGTHUC})">
+                            <img style="width: 300px; height: 210px;border-radius: 5px;object-fit:cover" src="@item.CONGTHUC.HINHANH" alt="">
+                        </a> 
+                        <div>
+                                <p style="font-size: 1.3em; color: #ff1e2c; font-size: 18px; font-weight: 400;; text-align: center; margin-top: 10px " class="txtGreyH" ><b>@item.CONGTHUC.TENCONGTHUC</b></p><br>
+                                @* <p class="txtGrey" style="text-align: center;">@Html.Raw(item.CONGTHUC.NOIDUNGPHU)</p>*@
+                        </div>
+                        <form action="@Url.Action("DropFavourite", "CongThuc", new {area= "User"})" method="post" >
+                            <input type="hidden" name="id" value="@item.ID" />
+                            <div style="justify-content:center; align-items:center" class="button_group">
+                                <button style="position:relative; left:42%" class="button wishlist" type="submit"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>            
+            }
+        </div>
+    </div>
+</div>

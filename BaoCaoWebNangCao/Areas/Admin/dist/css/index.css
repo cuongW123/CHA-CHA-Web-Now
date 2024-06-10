@@ -1,0 +1,35 @@
+﻿table tr:first-child {
+    background-color: #6610F2;
+    color: #ffffff;
+}
+
+table tr:nth-child(2n) {
+    background-color: #E2D9F3;
+}
+/*table tr {
+        border-bottom: 1px solid #666;
+    }*/
+
+.custom-btn {
+    background-color: #8540F5;
+    color: white;
+    border-color: #8540F5;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.custom-table {
+    border-radius: 10px;
+}
+
+.styled-block {
+    border-radius: 10px;
+    background-color: white;
+    margin: 20px 0px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-font {
+    color: #2C1A4D;
+}

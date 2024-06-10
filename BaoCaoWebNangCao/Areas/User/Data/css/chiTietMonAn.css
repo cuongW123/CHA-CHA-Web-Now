@@ -1,0 +1,113 @@
+
+
+
+.mainText{
+    /*width:50%;*/
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    width:100%;
+    /*min-width: 400px;*/
+}
+.body01{
+    margin: 50px 0 50px 0;
+}
+
+/*.imgvstxt{
+    display: flex;
+    flex-direction:row;
+    align-items:flex-start;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+}
+.imgvstxt:hover{*/
+    /* transition: 0.4s linear; */
+    /*transform: translateX(40px);
+    -webkit-transform: translateX(40px);
+}
+.txt{
+    margin-left: 10px;*/
+   /* width: 100%;*/
+   /*justify-content:center;
+}*/
+
+/*.txtGrey{
+    color: #333;
+    width: 100%;
+}
+.txtGreyH{
+    color: #484848;
+    text-decoration: none;
+}
+.tag{
+    display: flex;
+    margin: 30px 3px;
+    border: 1px;
+}
+.tintuc{
+    background-color: #f3f3f3;
+    color: #333;
+    padding:30px 30px;
+}
+.bantay{
+    cursor: pointer;
+    margin: 0 50px;
+    transition: all 0.2s linear;
+}
+.bantay:hover{
+    color: #f4c651;
+}
+.danhgia{
+    margin: 50px 0;
+    padding: 30px 30px;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-wrap: wrap;
+}
+.maybeLike{
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: space-around;
+    width: 80%;
+    margin-left: 10%;
+}
+.tphan{
+    width: 300px;
+    margin: 20px 10px 20px 10px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;*/
+    /* vij tri cuar transition se anh huong den do muot cua hoat anh */
+/*}
+.tphan:hover{
+    transform: scale(01.09);
+    -webkit-transform: scale(01.09);       
+}*/
+/* Footer */
+/*.phancuoi{
+    background-color: #ededeb;*/
+    /* height: 325px; */
+    /*margin-top: -4px;
+    display: flex;
+    justify-content: space-between;
+}
+.gioithieu{
+    margin-top: -40px;
+    padding: 10px 0 0 20px;  
+}
+.phancuoi2{
+    margin-top: 45px;
+}
+.fontfooter{
+    font-size: 17px;
+    padding: 10px 0;   
+}
+.box7{
+    height: 115px;
+    margin-top:9px;
+}
+.phancuoi3{
+    margin-top:20px ;
+}
+.gioithieu3{
+    margin-top: 40px; 
+}*/

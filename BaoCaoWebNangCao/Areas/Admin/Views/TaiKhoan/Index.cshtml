@@ -1,0 +1,71 @@
+﻿@model List<BaoCaoWebNangCao.Models.TAIKHOAN>
+@{
+    ViewBag.Title = "Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+}
+<div class="styled-block">
+    <div class="row justify-content-between">
+        <div class="col-md-6 " style="margin: 10px 0px">
+            <h2 class="custom-font"><b>DANH SÁCH TÀI KHOẢN</b></h2>
+        </div>
+        <div class="col-md-3 ">
+            <div class="">
+                <a class=" btn  custom-btn  " href="@Url.Action("Create","TaiKhoan",new {area="Admin"})">Thêm Mới Tài Khoản</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="styled-block">
+    <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/TaiKhoan/Index">
+        <div class="input-group mb-3">
+            <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
+            <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
+        </div>
+    </form>
+    <table class="table">
+        <tr>
+            @*<th>ID</th>*@
+            <th>Tên Đăng Nhập</th>
+            <th>Mật Khẩu</th>
+            <th>Loại Tài Khoản</th>
+            <th>Tên Người Dùng</th>
+            <th>Ảnh Đại Diện</th>
+            @*<th>Ngày Sinh</th>
+                <th>Địa chỉ</th>
+                <th>Số Điện Thoại</th>
+                <th>Email</th>
+                <th>Giới Tính</th>*@
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@item.ID</td>*@
+                <td>@item.TENDANGNHAP</td>
+                <td>@item.MATKHAU</td>
+                <td>@item.LOAITAIKHOAN</td>
+                <td>@item.TENNGUOIDUNG</td>
+                <td>
+                    <img src="@item.HINHANH" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px" />
+                </td>
+                @*<td>@item.NGAYSINH</td>
+                    <td>@item.DIACHI</td>
+                    <td>@item.SODIENTHOAI</td>
+                    <td>@item.EMAIL</td>
+                    <td>@item.GIOITINH</td>*@
+                <td><a class="btn" style="background-color: #8540F5; color: #ffffff " href="@Url.Action("Detail","TaiKhoan", new {area="Admin", id = item.ID})">Chi Tiết</a></td>
+                <td><a class="btn " style="background-color: #6610F2; color: #ffffff" href="@Url.Action("Edit","TaiKhoan", new {area="Admin", id = item.ID})">Sửa</a></td>
+                <td><a class="btn  " style="background-color: #520DC2; color: #ffffff" href="@Url.Action("Delete","TaiKhoan", new {area="Admin", id = item.ID})">Xóa</a></td>
+            </tr>
+        }
+    </table>
+
+</div>

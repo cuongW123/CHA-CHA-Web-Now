@@ -1,0 +1,28 @@
+﻿@model BaoCaoWebNangCao.Models.DANHMUCCONGTHUC
+
+@{
+    ViewBag.Title = "Sửa danh mục công thức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Sửa danh mục</h2>
+<form action="@Url.Action("Edit","DanhMucCongThuc",new {area="Admin",id=Model.ID})" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="idtaikhoan">ID Tài Khoản</label>
+            <input type="text" class="form-control" id="idtaikhoan" name="idtaikhoan" placeholder="" value="@Model.IDTAIKHOAN" />
+           
+        </div>
+        <div class="col-md-6">
+            <label for="tendanhmuc">Tên Danh Mục</label>
+            <input type="text" class="form-control" id="tendanhmuc" name="tendanhmuc" placeholder="" value="@Model.TENDANHMUC" />
+        </div>
+       
+    </div>
+    <button type="submit" class="btn btn-success">Sửa</button>
+    <a href="@Url.Action("Index","DanhMucCongThuc",new {area="Admin"})" class="btn btn-danger">Trở về</a>
+</form>
+
+

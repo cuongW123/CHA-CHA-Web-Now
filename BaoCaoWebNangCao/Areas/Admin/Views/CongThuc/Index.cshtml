@@ -1,0 +1,83 @@
+﻿@model List<BaoCaoWebNangCao.Models.CONGTHUC>
+
+@{
+    ViewBag.Title = "Công thức pha chế";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+}
+
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+}
+
+<div style="width: 100%;height: 100%">
+    <div class="styled-block">
+        <div class="row justify-content-between">
+            <div class="col-md-6 " style="margin: 10px 0px">
+                <h2 class="custom-font"><b>DANH SÁCH CÔNG THỨC</b></h2>
+            </div>
+            <div class="col-md-3 ">
+                <div class="">
+                    <a class=" btn  custom-btn  " href="@Url.Action("Create","CongThuc",new {area="Admin"})">Thêm Mới Công Thức</a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class=" ">
+                    <a class=" btn custom-btn" href="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})">Thêm Mới Danh Mục</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="styled-block">
+        <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/CongThuc/Index" method="post">
+
+            <div class="input-group mb-3">
+                <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
+                <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
+            </div>
+
+            <table class="table border-opacity-10 custom-table">
+                <tr>
+                    <th>ID</th>
+                    @*<th>ID Danh Mục</th>*@
+                    <th>Tên Danh Mục</th>
+                    <th>Tên Công Thức</th>
+                    <th>Ngày Đăng Tải</th>
+                    @*<th>Nguyên Liệu</th>*@
+                    <th>Hình Ảnh</th>
+                    @*<th>Nội Dung</th>
+                        <th>Nội Dung Phụ</th>*@
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        @*<td>@item.IDDANHMUC</td>*@
+                        @{
+                            if (item.DANHMUCCONGTHUC != null)
+                            {
+                                <td>@item.DANHMUCCONGTHUC.TENDANHMUC</td>
+                            }
+                        }
+                        <td>@item.TENCONGTHUC</td>
+                        <td>@item.NGAYDANGTAI</td>
+                        @*<td>@item.NGUYENLIEU</td>*@
+                        <td>
+                            <img src="@item.HINHANH" style="width:100px; height:100px;object-fit:cover; border-radius:10px" />
+                        </td>
+                        @*<td>@item.NOIDUNG</td>
+                            <td>@item.NOIDUNGPHU</td>*@
+                        <td><a class="btn " style="background-color: #8540F5; color: #ffffff " href="@Url.Action("Detail","CongThuc", new {area="Admin", id = item.ID})">Chi Tiết</a></td>
+                        <td><a class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})">Sửa</a></td>
+                        <td><a class="btn " style="background-color: #520DC2; color: #ffffff " href="@Url.Action("Delete","CongThuc", new {area="Admin", id = item.ID})">Xóa</a></td>
+
+                    </tr>
+                }
+            </table>
+        </form>
+    </div>
+</div>
+

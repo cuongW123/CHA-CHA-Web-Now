@@ -1,0 +1,83 @@
+﻿@model BaoCaoWebNangCao.Models.CONGTHUC
+
+@{
+    ViewBag.Title = "Chi Tiết Công Thức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Chi Tiết Công Thức</h2>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID Danh Mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDDANHMUC)
+        </dd>
+        <br />
+        <dt>
+            Tên Công Thức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENCONGTHUC)
+        </dd>
+        <br />
+
+        <dt>
+            Ngày Đăng Tải
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYDANGTAI)
+        </dd>
+        <br />
+
+        <dt>
+            Nguyên Liệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUYENLIEU)
+        </dd>
+        <br />
+
+        <dt>
+            Hình Ảnh
+        </dt>
+
+        <dd>
+            <img src="@Model.HINHANH" style="width: 100px; height: 100px" />
+            @*@Html.DisplayFor(model => model.HINHANH)*@
+        </dd>
+        <br />
+
+        <dt>
+            Nội dung chính
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.NOIDUNG)*@
+            @Html.Raw(Model.NOIDUNG)
+        </dd>
+        <br />
+
+        <dt>
+            Nội Dung Phụ
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NOIDUNGPHU)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Trở lại", "Index")
+</p>

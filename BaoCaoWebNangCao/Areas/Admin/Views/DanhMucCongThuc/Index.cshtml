@@ -1,0 +1,64 @@
+﻿@model List<BaoCaoWebNangCao.Models.DANHMUCCONGTHUC>
+@{
+    ViewBag.Title = "Danh Mục Công Thức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css"/>
+}
+
+<div class="styled-block">
+    <div class="row justify-content-between">
+        <div class="col-md-6 " style="margin: 10px 0px">
+            <h2 class="custom-font"><b>DANH MỤC CÔNG THỨC</b></h2>
+        </div>
+        <div class="col-md-3 ">
+            <div class="">
+                <a class=" btn  custom-btn  " href="@Url.Action("Create","CongThuc",new {area="Admin"})">Thêm Mới Công Thức</a>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class=" ">
+                <a class=" btn custom-btn" href="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})">Thêm Mới Danh Mục</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="styled-block">
+    <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/DanhMucCongThuc/Index">
+        <div class="input-group mb-3">
+            <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
+            <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
+        </div>
+    </form>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Tên Người Dùng</th>
+            <th>Tên Danh Mục</th>
+            <th></th>
+            <th></th>
+            <th></th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                @if (item.TAIKHOAN != null)
+                {
+                    <td>@item.TAIKHOAN.TENNGUOIDUNG</td>
+                }
+                <td>@item.TENDANHMUC</td>
+                <td><a class="btn  " style="background-color: #8540F5; color: #ffffff "  href="@Url.Action("Detail","DanhMucCongThuc", new {area="Admin", id = item.ID})">Chi tiết </a></td>
+                <td><a class="btn  " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","DanhMucCongThuc", new {area="Admin", id = item.ID})">Sửa </a></td>
+                <td><a class="btn  " style="background-color: #520DC2;color: #ffffff" href="@Url.Action("Delete","DanhMucCongThuc", new {area="Admin", id = item.ID})">Xóa </a></td>
+
+            </tr>
+        }
+    </table>
+</div>
+

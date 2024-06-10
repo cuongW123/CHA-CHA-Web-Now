@@ -1,0 +1,49 @@
+﻿@model BaoCaoWebNangCao.Models.CONGTHUC
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/User/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="container_fullwidth">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="special-deal leftbar" style="margin-top:0;">
+                    <h4 class="productname" >@Model.TENCONGTHUC </h4>
+                    <div style="display:flex; align-items:center; justify-content:space-around" class="special-item">
+                        <div class="product-image">                           
+                                <img src="@Model.HINHANH" style="height:50px;object-fit:cover; width:50px; border:1px; border-radius:20px" alt="Hình Ảnh Công Thức">                          
+                        </div>
+                        @*<div class="product-info">
+                            <div class="button_group"><button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button></div>
+
+                        </div>*@
+                    </div>
+                    <div class="special-item">                        
+                            <div>@Model.NGAYDANGTAI</div>                    
+                    </div>
+                    <div class="special-item">
+                        <div>@Html.Raw(Model.NOIDUNGPHU)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="checkout-page">
+                    <ol class="checkout-steps">
+                        <li class="steps active">
+                            <h2  class="step-title">
+                                @Html.Raw(Model.NGUYENLIEU)
+                            </h2>
+                            <div class="step-description">                                                            
+                                <div class="new-customer">
+                                    <h5>
+                                        @Html.Raw(Model.NOIDUNG)
+                                    </h5>                                                                                      
+                                </div>                                                                  
+                            </div>
+                        </li>                     
+                    </ol>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>

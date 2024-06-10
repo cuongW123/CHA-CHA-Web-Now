@@ -1,0 +1,62 @@
+﻿@model BaoCaoWebNangCao.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Edit Accout";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Sửa Tài Khoản</h2>
+<form action="/Admin/TaiKhoan/Edit/@Model.ID" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="tendangnhap">Tên Đăng Nhập</label>
+            <input type="text" class="form-control" id="tendangnhap" name="tendangnhap" placeholder="" value="@Model.TENDANGNHAP" />
+        </div>
+        <div class="col-md-6">
+            <label for="matkhau">Mật khẩu</label>
+            <input type="text" class="form-control" id="matkhau" name="matkhau" placeholder="" value="@Model.MATKHAU" />
+        </div>
+        <div class="col-md-6">
+            <label for="loaitaikhoan">Loại Tài Khoản</label>
+            <input type="text" class="form-control" id="loaitaikhoan" name="loaitaikhoan" placeholder="" value="@Model.LOAITAIKHOAN" />
+        </div>
+        <div class="col-md-6">
+            <label for="tennguoidung">Tên Người Dùng</label>
+            <input type="text" class="form-control" id="tennguoidung" name="tennguoidung" placeholder="" value="@Model.TENNGUOIDUNG" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngaysinh">Ngày Sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" name="ngaysinh" placeholder="" value="@Model.NGAYSINH.Value.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-6">
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="" value="@Model.DIACHI" />
+        </div>
+        <div class="col-md-6">
+            <label for="sodienthoai">Số Điện Thoại</label>
+            <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="" value="@Model.SODIENTHOAI" />
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="" value="@Model.EMAIL" />
+        </div>
+        <div class="col-md-6">
+            <label for="gioitinh">Giới Tính</label>
+            <div>
+                <input type="radio" name="gioitinh" value="Nam" checked="@(Model.GIOITINH == "Nam")" />Nam
+                <input type="radio" name="gioitinh" value="Nữ" checked="@(Model.GIOITINH == "Nữ")"/>Nữ
+                <input type="radio" name="gioitinh" value="Khác" checked="@(Model.GIOITINH == "Khác")"/>Khác
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="hinhanh">Hình Ảnh</label>
+            <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" value="@Model.HINHANH" />
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Sửa</button>
+    <a href="@Url.Action("Index","TaiKhoan",new {area="Admin"})" class="btn btn-danger">Trở về</a>
+</form>
+

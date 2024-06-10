@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* body */
+.tong{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-style: dashed;
+    border-color: red; */
+    align-items: center;
+}
+.canhan{
+    width: 80%;
+    /* border-style: dashed;
+    border-color: aquamarine; */
+    flex-wrap: wrap;
+    display: flex;
+}
+.imgvstxt{
+    display: flex;
+}
+.txt{
+    margin: 0 25px 0 25px;
+}
+.maybeLike{
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: space-around;
+    width: 80%;
+    /* border-style: dashed; */
+}
+.txtGrey{
+    color: #333;
+    width: 100%;
+}
+.txtGreyH{
+    color: #484848;
+    text-decoration: none;
+}
+.tphan{
+    width: 300px;
+    margin: 20px 10px 20px 10px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    /* vij tri cuar transition se anh huong den do muot cua hoat anh */
+}
+.tphan:hover{
+    transform: scale(1.5);
+    -webkit-transform: scale(01.09);       
+}
+.btnMore{
+    transition: 0.4s;
+    margin:10px;
+}
+.btnMore:hover{
+    background-color: #484848	;
+    transition: scale(0.1,0.9);
+    color: white;
+}

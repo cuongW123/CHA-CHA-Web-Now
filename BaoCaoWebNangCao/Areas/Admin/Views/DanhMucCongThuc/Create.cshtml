@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Tạo mới danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+
+}
+
+<h2>Tạo mới danh mục</h2>
+<form action="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="idtaikhoan">ID Tài Khoản</label>
+            <input type="text" class="form-control" id="idtaikhoan" name="idtaikhoan" placeholder="" />
+        </div>
+        <div class="col-md-6">
+            <label for="tendanhmuc">Tên danh mục</label>
+            <input type="text" class="form-control" id="tendanhmuc" name="tendanhmuc" placeholder="" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Thêm</button>
+    <a href="@Url.Action("Index","DanhMucCongThuc",new {area="Admin"})" class="btn btn-danger">Trở về</a>
+</form>
+
+

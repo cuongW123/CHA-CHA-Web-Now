@@ -1,0 +1,36 @@
+﻿@model BaoCaoWebNangCao.Models.DANHMUCCONGTHUC
+
+@{
+    ViewBag.Title = "Chi Tiết Danh Mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+
+}
+
+<h2>Chi Tiết Danh Mục</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID Tài Khoản Đăng Bài
+        </dt>
+        <br />
+        <dd>
+            @Html.DisplayFor(model => model.IDTAIKHOAN)
+        </dd>
+        <br />
+
+        <dt>
+            Tên Danh Mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDANHMUC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Trở lại", "Index")
+</p>
