@@ -23,7 +23,20 @@ namespace BaoCaoWebNangCao.Areas.Admin.Controllers
         {
             WEBNANGCAOEntities1 db = new WEBNANGCAOEntities1();
             CONGTHUC congthuc = db.CONGTHUCs.Where(row=> row.ID == id).FirstOrDefault();
-            return View(congthuc);
+			
+            /*Modal detail*/
+            if (congthuc == null)
+			{
+				return HttpNotFound();
+			}
+
+			if (Request.IsAjaxRequest())
+			{
+				return PartialView("_DetailPartial", congthuc);
+			}
+
+			return View(congthuc);
+			
         }
         public ActionResult Create ()
         {

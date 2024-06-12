@@ -2316,7 +2316,7 @@
     <Content Include="Areas\Admin\dist\img\user7-128x128.jpg" />
     <Content Include="Areas\Admin\dist\img\user8-128x128.jpg" />
     <Content Include="Areas\Admin\dist\js\app.min.js" />
-    <Content Include="Areas\Admin\dist\js\demo.js" />
+    <Content Include="Areas\Admin\dist\js\modalDetail.js" />
     <Content Include="Areas\Admin\dist\js\pages\dashboard2.js" />
     <Content Include="Areas\Admin\plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Admin\plugins\ckeditor\build-config.js" />
@@ -3288,6 +3288,7 @@
     <Content Include="Areas\Admin\Data\plugins\summernote\summernote.js.map" />
     <Content Include="Areas\Admin\Data\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\Data\plugins\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\CongThuc\_DetailPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

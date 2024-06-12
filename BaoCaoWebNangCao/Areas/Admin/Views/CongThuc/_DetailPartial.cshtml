@@ -1,0 +1,67 @@
+﻿
+@model BaoCaoWebNangCao.Models.CONGTHUC
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+}
+
+@*<div>
+
+    <dl class="dl-horizontal">
+        <dt>ID Danh Mục</dt>
+        <dd>@Html.DisplayFor(model => model.IDDANHMUC)</dd>
+        <br />
+        <dt>Tên Công Thức</dt>
+        <dd>@Html.DisplayFor(model => model.TENCONGTHUC)</dd>
+        <br />
+        <dt>Ngày Đăng Tải</dt>
+        <dd>@Html.DisplayFor(model => model.NGAYDANGTAI)</dd>
+        <br />
+        <dt>Nguyên Liệu</dt>
+        <dd>@Html.DisplayFor(model => model.NGUYENLIEU)</dd>
+        <br />
+        <dt>Hình Ảnh</dt>
+        <dd><img src="@Model.HINHANH" style="width: 100px; height: 100px;object-fit:cover; border-radius: 10px" /></dd>
+        <br />
+        <dt>Nội dung chính</dt>
+        <dd>@Html.Raw(Model.NOIDUNG)</dd>
+        <br />
+        <dt>Nội Dung Phụ</dt>
+        <dd>@Html.Raw(Model.NOIDUNGPHU)</dd>
+    </dl>
+</div>*@
+
+<div class="container">
+    <div class=" row styled-block">
+        <p><b>Hình ảnh</b></p>
+        <div class="d-flex justify-content-center"><img src="@Model.HINHANH" style="width: 100px; height: 100px;object-fit:cover; border-radius: 10px" /></div>
+    </div>
+    <div class="row styled-block">
+        <p><b>ID danh mục</b></p>
+        <p>@Model.IDDANHMUC</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>ID công thức</b></p>
+        <p>@Model.ID</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Tên công thức</b></p>
+        <p>@Model.TENCONGTHUC</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Ngày đăng tải</b></p>
+        <p>@Model.NGAYDANGTAI</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Nguyên liệu</b></p>
+        <p>@Model.NGUYENLIEU</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Nội dung</b></p>
+        <div style="max-height:100%; max-width:100%"><p>@Html.Raw(Model.NOIDUNG)</p></div>
+    </div>
+    <div class="row styled-block">
+        <p><b>Nồi dung phụ</b></p>
+        <p>@Html.Raw(Model.NOIDUNGPHU)</p>
+    </div>
+</div>
+

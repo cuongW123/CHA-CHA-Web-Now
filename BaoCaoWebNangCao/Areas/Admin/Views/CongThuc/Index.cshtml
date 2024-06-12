@@ -11,11 +11,19 @@
 
 <div style="width: 100%;height: 100%">
     <div class="styled-block">
-        <div class="row justify-content-between">
+        <div class="row ">
             <div class="col-md-6 " style="margin: 10px 0px">
                 <h2 class="custom-font"><b>DANH SÁCH CÔNG THỨC</b></h2>
             </div>
-            <div class="col-md-3 ">
+            <div class="col-md-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v3</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-start">
+            <div class=" col-md-3 ">
                 <div class="">
                     <a class=" btn  custom-btn  " href="@Url.Action("Create","CongThuc",new {area="Admin"})">Thêm Mới Công Thức</a>
                 </div>
@@ -51,6 +59,25 @@
                     <th></th>
                     <th></th>
                 </tr>
+                @*Modal chi tiết công thức *@
+                <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết công thức</b></h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Nội dung chi tiết sẽ được tải ở đây -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -66,13 +93,13 @@
                         <td>@item.NGAYDANGTAI</td>
                         @*<td>@item.NGUYENLIEU</td>*@
                         <td>
-                            <img src="@item.HINHANH" style="width:100px; height:100px;object-fit:cover; border-radius:10px" />
+                            <img src="@item.HINHANH" style="width:45px; height:45px;object-fit:cover; border-radius:10px" />
                         </td>
                         @*<td>@item.NOIDUNG</td>
                             <td>@item.NOIDUNGPHU</td>*@
-                        <td><a class="btn " style="background-color: #8540F5; color: #ffffff " href="@Url.Action("Detail","CongThuc", new {area="Admin", id = item.ID})">Chi Tiết</a></td>
-                        <td><a class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})">Sửa</a></td>
-                        <td><a class="btn " style="background-color: #520DC2; color: #ffffff " href="@Url.Action("Delete","CongThuc", new {area="Admin", id = item.ID})">Xóa</a></td>
+                        <td><a id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>
+                        <td><a class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i></a></td>
+                        <td><a class="btn " style="background-color: #520DC2; color: #ffffff " href="@Url.Action("Delete","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i></a></td>
 
                     </tr>
                 }
@@ -81,3 +108,26 @@
     </div>
 </div>
 
+@section modalDetails{
+    <script>
+    $(document).ready(function() {
+        $('#modal-detail').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            // Use AJAX to load the content
+            $.ajax({
+                url: '@Url.Action("Detail", "CongThuc", new { area = "Admin" })',
+                type: 'GET',
+                data: { id: id },
+                success: function(response) {
+                    modal.find('.modal-body').html(response);
+                },
+                error: function() {
+                    modal.find('.modal-body').html('<p>Error loading details. Please try again.</p>');
+                }
+            });
+        });
+    });
+    </script>
+}
