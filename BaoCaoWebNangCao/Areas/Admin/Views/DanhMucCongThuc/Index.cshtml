@@ -5,7 +5,7 @@
 
 }
 @section recipeCategoryStle {
-    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css"/>
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
 }
 
 <div class="styled-block">
@@ -31,34 +31,80 @@
     <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/DanhMucCongThuc/Index">
         <div class="input-group mb-3">
             <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
-            <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Tên danh mục">
         </div>
     </form>
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>Tên Người Dùng</th>
-            <th>Tên Danh Mục</th>
-            <th></th>
-            <th></th>
-            <th></th>
-
-        </tr>
-        @foreach (var item in Model)
-        {
+    <table class="table  table-hover border-opacity-10 ">
+        <thead>
             <tr>
-                <td>@item.ID</td>
-                @if (item.TAIKHOAN != null)
-                {
-                    <td>@item.TAIKHOAN.TENNGUOIDUNG</td>
-                }
-                <td>@item.TENDANHMUC</td>
-                <td><a class="btn  " style="background-color: #8540F5; color: #ffffff "  href="@Url.Action("Detail","DanhMucCongThuc", new {area="Admin", id = item.ID})">Chi tiết </a></td>
-                <td><a class="btn  " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","DanhMucCongThuc", new {area="Admin", id = item.ID})">Sửa </a></td>
-                <td><a class="btn  " style="background-color: #520DC2;color: #ffffff" href="@Url.Action("Delete","DanhMucCongThuc", new {area="Admin", id = item.ID})">Xóa </a></td>
+                <th>ID</th>
+                <th>Tên Người Dùng</th>
+                <th>Tên Danh Mục</th>
+                <th>Chi tiết</th>
+                <th>Sửa</th>
+                <th>Xóa</th>
 
             </tr>
+        </thead>
+        @*Modal chi tiết công thức *@
+        <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết danh mục công thức</b></h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Nội dung chi tiết sẽ được tải ở đây -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.ID</td>
+                    @if (item.TAIKHOAN != null)
+                    {
+                        <td>@item.TAIKHOAN.TENNGUOIDUNG</td>
+                    }
+                    <td>@item.TENDANHMUC</td>
+                    <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>
+                    <td><a class="btn  " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i> </a></td>
+                    <td><a class="btn  " style="background-color: #520DC2;color: #ffffff" href="@Url.Action("Delete","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i> </a></td>
+
+                </tr>
+            </tbody>
         }
     </table>
 </div>
 
+@section modalDetails{
+    <script>
+    $(document).ready(function() {
+        $('#modal-detail').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            // Use AJAX to load the content
+            $.ajax({
+                url: '@Url.Action("Detail", "DanhMucCongThuc", new { area = "Admin" })',
+                type: 'GET',
+                data: { id: id },
+                success: function(response) {
+                    modal.find('.modal-body').html(response);
+                },
+                error: function() {
+                    modal.find('.modal-body').html('<p>Error loading details. Please try again.</p>');
+                }
+            });
+        });
+    });
+    </script>
+}

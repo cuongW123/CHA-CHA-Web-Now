@@ -1,36 +1,26 @@
 ﻿@model BaoCaoWebNangCao.Models.DANHMUCCONGTHUC
-
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+}
 @{
-    ViewBag.Title = "Chi Tiết Danh Mục";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
+    ViewBag.Title = "Chi Tiết Công Thức";
+    
 
 }
 
-<h2>Chi Tiết Danh Mục</h2>
+<div class="container">
+    <div class="row styled-block">
+        <p><b>ID tài khoản đăng bài</b></p>
+        <p>@Model.IDTAIKHOAN</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>ID danh mục</b></p>
+        <p>@Model.ID</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Tên danh mục</b></p>
+        <p>@Model.TENDANHMUC</p>
+    </div>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            ID Tài Khoản Đăng Bài
-        </dt>
-        <br />
-        <dd>
-            @Html.DisplayFor(model => model.IDTAIKHOAN)
-        </dd>
-        <br />
-
-        <dt>
-            Tên Danh Mục
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TENDANHMUC)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Trở lại", "Index")
-</p>
+

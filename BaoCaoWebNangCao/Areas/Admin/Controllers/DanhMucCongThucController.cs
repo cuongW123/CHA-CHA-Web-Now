@@ -22,8 +22,17 @@ namespace BaoCaoWebNangCao.Areas.Admin.Controllers
         {
             WEBNANGCAOEntities1 db = new WEBNANGCAOEntities1();
             DANHMUCCONGTHUC danhmuc = db.DANHMUCCONGTHUCs.Where(row => row.ID == id).FirstOrDefault();
+			/*Modal detail*/
+			if (danhmuc == null)
+			{
+				return HttpNotFound();
+			}
 
-            return View(danhmuc);
+			if (Request.IsAjaxRequest())
+			{
+				return PartialView("Detail", danhmuc);
+			}
+			return View(danhmuc);
         }
         public ActionResult Create()
         {

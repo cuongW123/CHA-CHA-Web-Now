@@ -23,7 +23,17 @@ namespace BaoCaoWebNangCao.Areas.Admin.Controllers
         {
             WEBNANGCAOEntities1 db = new WEBNANGCAOEntities1();
             TAIKHOAN taikhoan = db.TAIKHOANs.Where(row => row.ID==id).FirstOrDefault();
-            return View(taikhoan);
+			/*Modal detail*/
+			if (taikhoan == null)
+			{
+				return HttpNotFound();
+			}
+
+			if (Request.IsAjaxRequest())
+			{
+				return PartialView("Detail", taikhoan);
+			}
+			return View(taikhoan);
         }
         public ActionResult Create()
         {

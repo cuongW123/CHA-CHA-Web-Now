@@ -1,100 +1,49 @@
 ﻿@model BaoCaoWebNangCao.Models.TAIKHOAN
-
-@{
-    ViewBag.Title = "Chi Tiết Tài Khoản";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
-
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
 }
 
-<h2>Chi Tiết Tài Khoản</h2>
 
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên Đăng Nhập
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TENDANGNHAP)
-        </dd>
-        <br />
-
-        <dt>
-            Mật Khẩu
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MATKHAU)
-        </dd>
-        <br />
-        <dt>
-            Loại Tài Khoản
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LOAITAIKHOAN)
-        </dd>
-        <br />
-        <dt>
-            Tên Người Dùng
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TENNGUOIDUNG)
-        </dd>
-        <br />
-        <dt>
-            Ngày Sinh
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NGAYSINH)
-        </dd>
-        <br />
-        <dt>
-            Địa Chỉ
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DIACHI)
-        </dd>
-        <br />
-        <dt>
-            Số Điện Thoại
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SODIENTHOAI)
-        </dd>
-        <br />
-        <dt>
-            Email
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EMAIL)
-        </dd>
-        <br />
-        <dt>
-            Giới Tính
-            @* @Html.DisplayNameFor(model => model.GIOITINH)*@
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GIOITINH)
-        </dd>
-        <br />
-        <dt>
-            <p>Ảnh Đại Diện</p>
-        </dt>
-        <dd>
-            <img src="@Model.HINHANH" style="width: 100px; height: 100px" />
-            @*@Html.DisplayFor(model => model.HINHANH)*@
-        </dd>
-    </dl>
+<div class="container">
+    <div class=" row styled-block">
+        <p><b>Ảnh đại diện</b></p>
+        <div class="d-flex justify-content-center"><img src="@Model.HINHANH" style="width: 100px; height: 100px;object-fit:cover; border-radius: 10px" /></div>
+    </div>
+    <div class="row styled-block">
+        <p><b>ID người dùng</b></p>
+        <p>@Model.ID</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Tên người dùng</b></p>
+        <p>@Model.TENNGUOIDUNG</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Tên đăng nhập</b></p>
+        <p>@Model.TENDANGNHAP</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Mật khẩu</b></p>
+        <p>@Model.MATKHAU</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Loại tài khoản</b></p>
+        <p>@Model.LOAITAIKHOAN</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Ngày sinh</b></p>
+        <p>@Model.NGAYSINH</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Địa chỉ</b></p>
+        <p>@Model.DIACHI</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Email</b></p>
+        <p>@Model.EMAIL</p>
+    </div>
+    <div class="row styled-block">
+        <p><b>Giới tính</b></p>
+        <p>@Model.GIOITINH</p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Trở Lại", "Index")
-</p>
+
