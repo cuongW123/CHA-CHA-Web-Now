@@ -48,15 +48,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        @*<th>ID Danh Mục</th>*@
+                        <th>Hình Ảnh</th>
+                        
                         <th>Tên Danh Mục</th>
                         <th>Tên Công Thức</th>
-                        <th>Ngày Đăng Tải</th>
-                        @*<th>Nguyên Liệu</th>*@
-                        <th>Hình Ảnh</th>
-                        @*<th>Nội Dung</th>
-                        <th>Nội Dung Phụ</th>*@
-                        <th>Chi tiết</th>
+                        <th>Ngày Đăng Tải</th>                      
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
@@ -83,9 +79,11 @@
                 @foreach (var item in Model)
                 {
                     <tbody>
-                        <tr>
+                        <tr id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">
                             <td>@item.ID</td>
-                            @*<td>@item.IDDANHMUC</td>*@
+                            <td>
+                                <img title="Ảnh công thức" src="@item.HINHANH" style="width:45px; height:45px;object-fit:cover; border-radius:10px" />
+                            </td>
                             @{
                                 if (item.DANHMUCCONGTHUC != null)
                                 {
@@ -93,14 +91,8 @@
                                 }
                             }
                             <td>@item.TENCONGTHUC</td>
-                            <td>@item.NGAYDANGTAI</td>
-                            @*<td>@item.NGUYENLIEU</td>*@
-                            <td>
-                                <img title="Ảnh công thức" src="@item.HINHANH" style="width:45px; height:45px;object-fit:cover; border-radius:10px" />
-                            </td>
-                            @*<td>@item.NOIDUNG</td>
-            <td>@item.NOIDUNGPHU</td>*@
-                            <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>
+                            <td>@item.NGAYDANGTAI</td>                          
+                            @* <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>*@
                             <td><a title="Sửa" class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i></a></td>
                             <td><a title="Xóa" class="btn " style="background-color: #520DC2; color: #ffffff " href="@Url.Action("Delete","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i></a></td>
 

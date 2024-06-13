@@ -4,56 +4,38 @@
     <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
 }
 
-@*<div>
-
-    <dl class="dl-horizontal">
-        <dt>ID Danh Mục</dt>
-        <dd>@Html.DisplayFor(model => model.IDDANHMUC)</dd>
-        <br />
-        <dt>Tên Công Thức</dt>
-        <dd>@Html.DisplayFor(model => model.TENCONGTHUC)</dd>
-        <br />
-        <dt>Ngày Đăng Tải</dt>
-        <dd>@Html.DisplayFor(model => model.NGAYDANGTAI)</dd>
-        <br />
-        <dt>Nguyên Liệu</dt>
-        <dd>@Html.DisplayFor(model => model.NGUYENLIEU)</dd>
-        <br />
-        <dt>Hình Ảnh</dt>
-        <dd><img src="@Model.HINHANH" style="width: 100px; height: 100px;object-fit:cover; border-radius: 10px" /></dd>
-        <br />
-        <dt>Nội dung chính</dt>
-        <dd>@Html.Raw(Model.NOIDUNG)</dd>
-        <br />
-        <dt>Nội Dung Phụ</dt>
-        <dd>@Html.Raw(Model.NOIDUNGPHU)</dd>
-    </dl>
-</div>*@
-
 <div class="container">
     <div class=" row styled-block">
-        <p><b>Hình ảnh</b></p>
+        <p class="d-flex justify-content-center"><b>Hình ảnh</b></p>
         <div class="d-flex justify-content-center"><img src="@Model.HINHANH" style="width: 100px; height: 100px;object-fit:cover; border-radius: 10px" /></div>
-    </div>
-    <div class="row styled-block">
-        <p><b>ID danh mục</b></p>
-        <p>@Model.IDDANHMUC</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>ID công thức</b></p>
-        <p>@Model.ID</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>Tên công thức</b></p>
-        <p>@Model.TENCONGTHUC</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>Ngày đăng tải</b></p>
-        <p>@Model.NGAYDANGTAI</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>Nguyên liệu</b></p>
-        <p>@Model.NGUYENLIEU</p>
+    </div>  
+    <div class="styled-block">
+        <table class="table">
+            <tr>
+                <th>ID danh mục</th>
+                <td>@Model.IDDANHMUC</td>
+            </tr>
+            <tr>
+                <th>ID công thức</th>
+                <td>@Model.ID</td>
+            </tr>
+            <tr>
+                <th>ID danh mục</th>
+                <td>@Model.ID</td>
+            </tr>
+            <tr>
+                <th>Tên công thức</th>
+                <td>@Model.TENCONGTHUC</td>
+            </tr>
+            <tr>
+                <th>Ngày đăng tải</th>
+                <td>@Model.NGAYDANGTAI</td>
+            </tr>
+            <tr>
+                <th>Nguyên liệu</th>
+                <td>@Model.NGUYENLIEU</td>
+            </tr>
+        </table>
     </div>
     <div class="row styled-block">
         <p><b>Nội dung</b></p>
@@ -64,4 +46,5 @@
         <p>@Html.Raw(Model.NOIDUNGPHU)</p>
     </div>
 </div>
+
 

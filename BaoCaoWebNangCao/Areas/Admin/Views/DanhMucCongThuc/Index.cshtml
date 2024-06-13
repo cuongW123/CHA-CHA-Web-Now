@@ -8,85 +8,94 @@
     <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
 }
 
-<div class="styled-block">
-    <div class="row justify-content-between">
-        <div class="col-md-6 " style="margin: 10px 0px">
-            <h2 class="custom-font"><b>DANH MỤC CÔNG THỨC</b></h2>
-        </div>
-        <div class="col-md-3 ">
-            <div class="">
-                <a class=" btn  custom-btn  " href="@Url.Action("Create","CongThuc",new {area="Admin"})">Thêm Mới Công Thức</a>
+
+<div style="width: 100%;height: 100%">
+    <div class="styled-block">
+        <div class="row ">
+            <div class="col-md-6 " style="margin: 10px 0px">
+                <h2 class="custom-font"><b>DANH MỤC CÔNG THỨC</b></h2>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v3</li>
+                </ol>
             </div>
         </div>
-        <div class="col-md-3 ">
-            <div class=" ">
-                <a class=" btn custom-btn" href="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})">Thêm Mới Danh Mục</a>
+        <div class="row d-flex justify-content-start">
+            <div class=" col-md-3 ">
+                <div class="">
+                    <a class=" btn  custom-btn  " href="@Url.Action("Create","CongThuc",new {area="Admin"})">Thêm Mới Công Thức</a>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="styled-block">
-    <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/DanhMucCongThuc/Index">
-        <div class="input-group mb-3">
-            <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
-            <input type="text" class="form-control" id="search" name="search" placeholder="Tên danh mục">
-        </div>
-    </form>
-    <table class="table  table-hover border-opacity-10 ">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên Người Dùng</th>
-                <th>Tên Danh Mục</th>
-                <th>Chi tiết</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
-
-            </tr>
-        </thead>
-        @*Modal chi tiết công thức *@
-        <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết danh mục công thức</b></h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Nội dung chi tiết sẽ được tải ở đây -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
-                    </div>
+            <div class="col-md-3 ">
+                <div class=" ">
+                    <a class=" btn custom-btn" href="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})">Thêm Mới Danh Mục</a>
                 </div>
             </div>
         </div>
-        @foreach (var item in Model)
-        {
-            <tbody>
+    </div>
+
+    <div class="styled-block">
+        <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/DanhMucCongThuc/Index">
+            <div class="input-group mb-3">
+                <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
+                <input type="text" class="form-control" id="search" name="search" placeholder="Tên danh mục">
+            </div>
+        </form>
+        <table class="table  table-hover border-opacity-10 ">
+            <thead>
                 <tr>
-                    <td>@item.ID</td>
-                    @if (item.TAIKHOAN != null)
-                    {
-                        <td>@item.TAIKHOAN.TENNGUOIDUNG</td>
-                    }
-                    <td>@item.TENDANHMUC</td>
-                    <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>
-                    <td><a class="btn  " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i> </a></td>
-                    <td><a class="btn  " style="background-color: #520DC2;color: #ffffff" href="@Url.Action("Delete","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i> </a></td>
+                    <th>ID</th>
+                    <th>Tên Người Dùng</th>
+                    <th>Tên Danh Mục</th>
+                    @*                <th>Chi tiết</th>*@
+                    <th>Sửa</th>
+                    <th>Xóa</th>
 
                 </tr>
-            </tbody>
-        }
-    </table>
-</div>
+            </thead>
+            @*Modal chi tiết công thức *@
+            <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết danh mục công thức</b></h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Nội dung chi tiết sẽ được tải ở đây -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">
+                        <td>@item.ID</td>
+                        @if (item.TAIKHOAN != null)
+                        {
+                            <td>@item.TAIKHOAN.TENNGUOIDUNG</td>
+                        }
+                        <td>@item.TENDANHMUC</td>
+                        @*<td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>*@
+                        <td><a class="btn  " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i> </a></td>
+                        <td><a class="btn  " style="background-color: #520DC2;color: #ffffff" href="@Url.Action("Delete","DanhMucCongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i> </a></td>
 
-@section modalDetails{
-    <script>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+    @section modalDetails{
+        <script>
     $(document).ready(function() {
         $('#modal-detail').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
@@ -106,5 +115,5 @@
             });
         });
     });
-    </script>
-}
+        </script>
+    }

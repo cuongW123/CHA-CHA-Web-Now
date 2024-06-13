@@ -8,19 +8,29 @@
 
 }
 
-<div class="container">
-    <div class="row styled-block">
-        <p><b>ID tài khoản đăng bài</b></p>
-        <p>@Model.IDTAIKHOAN</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>ID danh mục</b></p>
-        <p>@Model.ID</p>
-    </div>
-    <div class="row styled-block">
-        <p><b>Tên danh mục</b></p>
-        <p>@Model.TENDANHMUC</p>
-    </div>
 
+<div class="container">
+   
+
+    <div class="styled-block">
+        <table class="table">
+            <tr>
+                <th>ID người dùng</th>
+                <td>@Model.IDTAIKHOAN</td>
+            </tr>
+            <tr>
+                <th>Tên người dùng</th>
+                <td>@Model.TAIKHOAN.TENNGUOIDUNG</td>
+            </tr>
+            <tr>
+                <th>ID danh mục</th>
+                <td>@Model.ID</td>
+            </tr>
+            <tr>
+                <th>Tên Danh Mục</th>
+                <td>@Model.TENDANHMUC</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
