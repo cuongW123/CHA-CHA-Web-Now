@@ -1,11 +1,11 @@
-﻿table tr:first-child {
+﻿/*table tr:first-child {
     background-color: #6610F2;
     color: #ffffff;
-}
+}*/
 
-table tr:nth-child(2n) {
+/*table tr:nth-child(2n) {
     background-color: #E2D9F3;
-}
+}*/
 /*table tr {
         border-bottom: 1px solid #666;
     }*/

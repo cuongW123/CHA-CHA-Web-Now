@@ -6,78 +6,123 @@
     BaoCaoWebNangCao.Models.WEBNANGCAOEntities1 db = new BaoCaoWebNangCao.Models.WEBNANGCAOEntities1();
 
 }
-
 <style>
     .error-message {
         font-size: 12px;
         color: red;
     }
 </style>
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+    <script src="~/Areas/Admin/dist/js/validateForm.js"></script>
+}
+<div class="row styled-block">
+    <h2 class="custom-font d-flex justify-content-center"><b>Thêm Mới Công Thức</b></h2>
+</div>
+<div class="styled-block">
+    <form class="needs-validation" novalidate action="@Url.Action("Create","CongThuc",new {area="Admin"})" method="post" enctype="multipart/form-data" id="form-add">
+        <div class="row">
+            @*<div class="col-md-6">
+                    <label for="iddanhmuc">ID Danh Mục</label>
+                    <input type="text" class="form-control" id="iddanhmuc" name="iddanhmuc" placeholder="" />
+                </div>*@
+            <div class="row">
+                <div class=" col-md-6">
+                    <label for="iddanhmuc" class="form-label">ID Danh Mục<span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-list"></i></span>
+                        </div>
+                        <select class="form-control " id="iddanhmuc" name="iddanhmuc" required>
+                            @foreach (var item in db.DANHMUCCONGTHUCs.ToList())
+                            {
+                                <option value="@item.ID">@item.TENDANHMUC</option>
+                            }
+                        </select>
+                        <div class="valid-feedback">Cú pháp chính xác</div>
+                        <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="tencongthuc">Tên Công Thức<span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-wine-glass-alt"></i></span>
+                        <input type="text" class="form-control" id="tencongthuc" name="tencongthuc" placeholder="Nước uống nhiệt đới" required />
+                        <div class="valid-feedback">Cú pháp chính xác</div>
+                        <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6">
+                    <label for="ngaydangtai">Ngày Đăng Tải<span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="date" class="form-control" id="ngaydangtai" name="ngaydangtai" placeholder="" required />
+                        <div class="valid-feedback">Cú pháp chính xác</div>
+                        <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                    </div>
 
-<h2>Thêm Công Thức</h2>
-<form action="@Url.Action("Create","CongThuc",new {area="Admin"})" method="post" enctype="multipart/form-data" id="form-add">
-    <div class="row">
-        @*<div class="col-md-6">
-            <label for="iddanhmuc">ID Danh Mục</label>
-            <input type="text" class="form-control" id="iddanhmuc" name="iddanhmuc" placeholder="" />
-        </div>*@
-        <div class="col-md-6">
-            <label for="iddanhmuc">ID Danh Mục</label>
-            <select class="form-control" id="iddanhmuc" name="iddanhmuc">
-                @foreach (var item in db.DANHMUCCONGTHUCs.ToList())
-                {
-                    <option value="@item.ID">@item.TENDANHMUC</option>
-                }
-            </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="nguyenlieu">Nguyên Liệu<span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-pizza-slice"></i></span>
+                        <input type="text" class="form-control" id="nguyenlieu" name="nguyenlieu" placeholder="Đường, chanh,..." required />
+                        <div class="valid-feedback">Cú pháp chính xác</div>
+                        <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                    </div>
 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="hinhanh">Hình Ảnh<span class="text-danger">*</span></label>
+                    <img src="https://img.meta.com.vn/Data/image/2022/05/14/meme-meo-bua-2.jpg" style="width: 80px; height: 80px;border-radius:5px; margin:15px" />
+                    <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" required />
+                    <div class="valid-feedback">Cú pháp chính xác</div>
+                    <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="noidung">Nội Dung<span class="text-danger">*</span></label>
+                    @*<input type="text" class="form-control" id="noidung" name="noidung" placeholder="" />*@
+                    <textarea class="form-control" id="noidung" name="noidung" required></textarea>
+                    <div class="valid-feedback">Cú pháp chính xác</div>
+                    <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="noidung">Nội Dung Phụ<span class="text-danger">*</span></label>
+                    @*<input type="text" class="form-control" id="noidungphu" name="noidungphu" placeholder="" />*@
+                    <textarea class="form-control" id="noidungphu" name="noidungphu" required></textarea>
+                    <div class="valid-feedback">Cú pháp chính xác</div>
+                    <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <span class="error-message"></span>    <label for="tencongthuc">Tên Công Thức</label>
-            <input type="text" class="form-control" id="tencongthuc" name="tencongthuc" placeholder="" />
-            
-        </div>
-        <div class="col-md-6">
-            <label for="ngaydangtai">Ngày Đăng Tải</label>
-            <input type="date" class="form-control" id="ngaydangtai" name="ngaydangtai" placeholder="" />
-        </div>
-        <div class="col-md-6">
-            <label for="nguyenlieu">Nguyên Liệu</label>
-            <input type="text" class="form-control" id="nguyenlieu" name="nguyenlieu" placeholder="" />
-        </div>
-        <div class="col-md-6">
-            <label for="hinhanh">Hình Ảnh</label>
-            <img src="https://img.meta.com.vn/Data/image/2022/05/14/meme-meo-bua-2.jpg" style="width: 80px; height: 80px;border-radius:5px"/>
-            <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" />
-        </div>
-        <div class="col-md-12">
-            <label for="noidung">Nội Dung</label>
-            @*<input type="text" class="form-control" id="noidung" name="noidung" placeholder="" />*@
-            <textarea  class="form-control" id="noidung" name="noidung"></textarea>
-        </div>
-        <div class="col-md-12">
-            <label for="noidung">Nội Dung Phụ</label>
-            @*<input type="text" class="form-control" id="noidungphu" name="noidungphu" placeholder="" />*@
-            <textarea class="form-control" id="noidungphu" name="noidungphu"></textarea>
+        @*<p>@ViewBag.error</p>*@
+        <br />
+        <button type="submit" class="btn btn-success">Thêm</button>
+        <a href="/Admin/congthuc/index" class="btn btn-danger">Trở về</a>
+    </form>
+</div>
 
-        </div>
-    </div>
-    @*<p>@ViewBag.error</p>*@
-    <br />
-    <button type="submit" class="btn btn-success">Thêm</button>
-    <a href="/Admin/congthuc/index" class="btn btn-danger">Trở về</a>
-</form>
+
 @section maJS{
     <script>
         CKEDITOR.replace('noidung')
         CKEDITOR.replace('noidungphu')
-
     </script>
-    }
+    <script src="~/Areas/Admin/dist/js/validateForm.js"></script>
+}
 <script>
     // truy vấn đễn các thẻ trong file
-    let inputName = document.querySelector('#tencongthuc');
+    /*let inputName = document.querySelector('#tencongthuc');
     let errorElement = inputName.parentElement.querySelector('.error-message');
-    let form = document.querySelector('#form-add');
+    let form = document.querySelector('#form-add');*/
     let inputFile = document.querySelector('#hinhanh');
     let img = inputFile.parentElement.querySelector('img');
 
@@ -87,34 +132,6 @@
         }
     }
 
-    // xử lý sự kiện khi người dùng nhấn ra ngoài ô input
-    inputName.onblur = () => {
-        isRequired(inputName);
-    }
-
-    // xử lý sự kiện người dùng nhập vào ô input, nếu nhập thì xóa lỗi 
-    inputName.oninput = () => {
-        errorElement.innerText = "";
-    }
-
-    // hàm kiểm tra ô input bắt buộc phải nhập
-    function isRequired(input) {
-        let isTrue = true;
-        // kiểm tra giá trị bên trong ô input, nếu rỗng thì gán isTrue = false
-        if (input.value === "") {
-            errorElement.innerText = "Vui lòng nhập trường này";
-            isTrue = false;
-        }
-        return isTrue;
-    }
-
-    form.onsubmit = (e) => {
-        // kiểm tra xem đã nhập tên công thức chưa, nếu chưa thì không cho submit form
-        if (!isRequired(inputName)) {
-            // dừng sự kiện submit form khi có lỗi
-            e.preventDefault();
-            return;
-        }
-    }
+    
 
 </script>
