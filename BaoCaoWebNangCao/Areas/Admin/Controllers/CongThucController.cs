@@ -1,6 +1,8 @@
 ﻿using BaoCaoWebNangCao.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -23,7 +25,19 @@ namespace BaoCaoWebNangCao.Areas.Admin.Controllers
             List<CONGTHUC> congthuc = db.CONGTHUCs.Where(row => row.TENCONGTHUC.Contains(search)).ToList();
             return View(congthuc);
         }
-        public ActionResult Detail(int id)
+        public ActionResult LoadTable(string search="")
+        {
+			WEBNANGCAOEntities1 db = new WEBNANGCAOEntities1();
+			/*List<CONGTHUC> congthuc= db.CONGTHUCs.ToList();*/
+			List<CONGTHUC> congthuc = db.CONGTHUCs.Where(row => row.TENCONGTHUC.Contains(search)).ToList();
+			string partialView = RenderPartialViewToString("CongThuc", congthuc);
+			var result = new
+			{
+				congthucs = partialView,
+			};
+			return Json(result, JsonRequestBehavior.AllowGet);
+		}
+		public ActionResult Detail(int id)
         {
             WEBNANGCAOEntities1 db = new WEBNANGCAOEntities1();
             CONGTHUC congthuc = db.CONGTHUCs.Where(row=> row.ID == id).FirstOrDefault();
@@ -114,5 +128,21 @@ namespace BaoCaoWebNangCao.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
+		public string RenderPartialViewToString(string viewName, object model)
+		{
+			if (string.IsNullOrEmpty(viewName))
+				viewName = ControllerContext.RouteData.GetRequiredString("action");
+
+			ViewData.Model = model;
+
+			using (StringWriter sw = new StringWriter())
+			{
+				ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+				ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+				viewResult.View.Render(viewContext, sw);
+
+				return sw.GetStringBuilder().ToString();
+			}
+		}
+	}
 }

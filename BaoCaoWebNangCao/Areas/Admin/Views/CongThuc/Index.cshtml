@@ -8,7 +8,25 @@
 @section recipeCategoryStle {
     <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
 }
-
+@*Modal chi tiết công thức *@
+<div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết </b><b style="color:#8540F5">công thức</b></h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Nội dung chi tiết sẽ được tải ở đây -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div style="width: 100%;height: 100%">
     <div class="styled-block">
         <div class="row ">
@@ -37,14 +55,14 @@
     </div>
 
     <div class="styled-block">
-        <form class="d-flex flex-row align-items-center flex-wrap" action="/Admin/CongThuc/Index" method="post">
+        <div class="d-flex flex-row align-items-center flex-wrap" action="/Admin/CongThuc/Index" method="post">
 
             <div class="input-group mb-3">
-                <button type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></button>
+                <div type="submit" class="input-group-text"><i class="fas fa-search fa-fw"></i></div>
                 <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
             </div>
 
-            <table class=" table  table-hover border-opacity-10 ">
+            <table id="cthuc" class=" table  table-hover border-opacity-10 ">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -57,25 +75,7 @@
                         <th>Xóa</th>
                     </tr>
                 </thead>
-                @*Modal chi tiết công thức *@
-                <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết </b><b style="color:#8540F5">công thức</b></h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Nội dung chi tiết sẽ được tải ở đây -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn" data-dismiss="modal" style="background-color: #8540F5; color: #ffffff">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 @foreach (var item in Model)
                 {
                     <tbody>
@@ -100,7 +100,7 @@
                     </tbody>
                 }
             </table>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -142,13 +142,14 @@
                         data: JSON.stringify({ id: ID }),
                         contentType: 'application/json',
                         success: function(response) {
-                            Swal.fire({
+                            /*Swal.fire({
                                 position: "center",
                                 icon: "success",
                                 title: "Xóa thành công",
                                 showConfirmButton: false,
                                 timer: 1500
-                            });
+                            });*/
+                            LoadTable();
                         },
                         error: function (er) {
                             console.log(er);
@@ -158,6 +159,27 @@
                 }
             });
         };
+        $('#search').keypress(function (e) {
+            if (e.which === 13) {
+                console.log("eerere");
+                LoadTable();
+            }
+        })
+        function LoadTable() {
+            var search = $('#search').val();
+            $.ajax({
+                url: '@Url.Action("LoadTable", "CongThuc", new { area = "Admin" })',
+                type: 'GET',
+
+                data: {search:search },
+                success: function(response) {
+                    $('#cthuc').html(response.congthucs);
+                },
+                error: function() {
+                    modal.find('.modal-body').html('<p>Error loading details. Please try again.</p>');
+                }
+            });
+        }
     </script>
 
 }

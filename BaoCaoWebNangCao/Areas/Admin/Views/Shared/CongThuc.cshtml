@@ -1,0 +1,40 @@
+﻿@model List<BaoCaoWebNangCao.Models.CONGTHUC>
+
+
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Hình Ảnh</th>
+
+        <th>Tên Danh Mục</th>
+        <th>Tên Công Thức</th>
+        <th>Ngày Đăng Tải</th>
+        <th>Sửa</th>
+        <th>Xóa</th>
+    </tr>
+</thead>
+@*Modal chi tiết công thức *@
+
+@foreach (var item in Model)
+{
+    <tbody>
+        <tr>
+            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.ID</td>
+            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">
+                <img title="Ảnh công thức" src="@item.HINHANH" style="width:45px; height:45px;object-fit:cover; border-radius:10px" />
+            </td>
+            @{
+                if (item.DANHMUCCONGTHUC != null)
+                {
+                    <td>@item.DANHMUCCONGTHUC.TENDANHMUC</td>
+                }
+            }
+            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.TENCONGTHUC</td>
+            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.NGAYDANGTAI</td>
+            @* <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>*@
+            <td><a title="Sửa" class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i></a></td>
+            <td><a onclick="onDeleteCT(@item.ID)" id="btn-xoa" title="Xóa" class="btn " style="background-color: #520DC2; color: #ffffff "><i class="fas fa-trash-alt"></i></a></td>
+
+        </tr>
+    </tbody>
+}

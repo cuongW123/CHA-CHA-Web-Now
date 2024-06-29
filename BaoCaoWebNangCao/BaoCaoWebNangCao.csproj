@@ -4274,6 +4274,7 @@
     <Content Include="Areas\Admin\Data\plugins\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Data\plugins\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Data\plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Shared\CongThuc.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
