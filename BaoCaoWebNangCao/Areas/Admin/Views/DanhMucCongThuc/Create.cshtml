@@ -2,24 +2,48 @@
 @{
     ViewBag.Title = "Tạo mới danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMax.cshtml";
-
-
+    BaoCaoWebNangCao.Models.WEBNANGCAOEntities1 db = new BaoCaoWebNangCao.Models.WEBNANGCAOEntities1();
 }
-
-<h2>Tạo mới danh mục</h2>
-<form action="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})" method="post">
+@section recipeCategoryStle {
+    <link rel="stylesheet" href="~/Areas/Admin/dist/css/index.css" />
+}
+<div class="styled-block">
+    <h2><b>Thêm mới</b><b style="color:#8540F5"> danh mục</b></h2>
+</div>
+<form class="needs-validtion" novalidate action="@Url.Action("Create","DanhMucCongThuc",new {area="Admin"})" method="post">
     <div class="row">
-        <div class="col-md-6">
-            <label for="idtaikhoan">ID Tài Khoản</label>
-            <input type="text" class="form-control" id="idtaikhoan" name="idtaikhoan" placeholder="" />
+        <div class=" col-md-6">
+            <label for="idtaikhoan" class="form-label">ID Tài Khoản<span class="text-danger">*</span></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fas fa-id-card"></i></span>
+                </div>
+                <select class="form-control " id="idtaikhoan" name="idtaikhoan" required>
+                    @foreach (var item in db.TAIKHOANs.ToList())
+                    {
+                        <option value="@item.ID">@item.TENNGUOIDUNG</option>
+                    }
+                </select>
+                <div class="valid-feedback">Cú pháp chính xác</div>
+                <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+            </div>
         </div>
         <div class="col-md-6">
-            <label for="tendanhmuc">Tên danh mục</label>
-            <input type="text" class="form-control" id="tendanhmuc" name="tendanhmuc" placeholder="" />
+            <label class="form-label" for="tendanhmuc">Tên Danh Mục<span class="text-danger">*</span></label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-wine-glass-alt"></i></span>
+                <input type="text" class="form-control" id="tendanhmuc" name="tendanhmuc" placeholder="Nước uống mùa hè" required />
+                <div class="valid-feedback">Cú pháp chính xác</div>
+                <div class="invalid-feedback">Vui lòng nhập đầy đủ và đúng</div>
+            </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Thêm</button>
-    <a href="@Url.Action("Index","DanhMucCongThuc",new {area="Admin"})" class="btn btn-danger">Trở về</a>
+    <div class="d-flex justify-content-between">
+        <a href="@Url.Action("Index","DanhMucCongThuc",new {area="Admin"})" class="btn custom-btn">Trở về</a>
+        <button type="submit" class="btn custom-btn">Thêm</button>
+    </div>
 </form>
 
-
+@section maJS{
+    <script src="~/Areas/Admin/dist/js/validateForm.js"></script>
+}

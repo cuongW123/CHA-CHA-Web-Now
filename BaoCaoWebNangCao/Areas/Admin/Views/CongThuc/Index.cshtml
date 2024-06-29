@@ -13,7 +13,7 @@
     <div class="styled-block">
         <div class="row ">
             <div class="col-md-6 " style="margin: 10px 0px">
-                <h2 class="custom-font"><b>DANH SÁCH CÔNG THỨC</b></h2>
+                <h2 class="custom-font"><b>DANH SÁCH </b><b style="color:#8540F5">CÔNG THỨC</b></h2>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb float-sm-right">
@@ -49,10 +49,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Hình Ảnh</th>
-                        
+
                         <th>Tên Danh Mục</th>
                         <th>Tên Công Thức</th>
-                        <th>Ngày Đăng Tải</th>                      
+                        <th>Ngày Đăng Tải</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                     </tr>
@@ -62,7 +62,7 @@
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết công thức</b></h2>
+                                <h2 class="modal-title" id="modalDetailLabel"><b>Chi tiết </b><b style="color:#8540F5">công thức</b></h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -79,9 +79,9 @@
                 @foreach (var item in Model)
                 {
                     <tbody>
-                        <tr id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">
-                            <td>@item.ID</td>
-                            <td>
+                        <tr>
+                            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.ID</td>
+                            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">
                                 <img title="Ảnh công thức" src="@item.HINHANH" style="width:45px; height:45px;object-fit:cover; border-radius:10px" />
                             </td>
                             @{
@@ -90,11 +90,11 @@
                                     <td>@item.DANHMUCCONGTHUC.TENDANHMUC</td>
                                 }
                             }
-                            <td>@item.TENCONGTHUC</td>
-                            <td>@item.NGAYDANGTAI</td>                          
+                            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.TENCONGTHUC</td>
+                            <td id="btn-detail-@item.ID" data-toggle="modal" data-target="#modal-detail" data-id="@item.ID">@item.NGAYDANGTAI</td>
                             @* <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>*@
                             <td><a title="Sửa" class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i></a></td>
-                            <td><a title="Xóa" class="btn " style="background-color: #520DC2; color: #ffffff " href="@Url.Action("Delete","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-trash-alt"></i></a></td>
+                            <td><a onclick="onDeleteCT(@item.ID)" id="btn-xoa" title="Xóa" class="btn " style="background-color: #520DC2; color: #ffffff "><i class="fas fa-trash-alt"></i></a></td>
 
                         </tr>
                     </tbody>
@@ -125,5 +125,39 @@
             });
         });
     });
+        function onDeleteCT(ID) {
+            Swal.fire({
+                title: "Xác nhận xóa?",
+                text: "Bạn sẽ không thể hoàn tác nếu nhấn đồng ý!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Xóa!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("Delete", "CongThuc", new { area = "Admin" })',
+                        type: 'POST',
+                        data: JSON.stringify({ id: ID }),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Xóa thành công",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        },
+                        error: function (er) {
+                            console.log(er);
+                            modal.find('.modal-body').html('<p>Error loading details. Please try again.</p>');
+                        }
+                    });
+                }
+            });
+        };
     </script>
+
 }
