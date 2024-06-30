@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Công Thức Pha Chế";
     Layout = "~/Areas/User/Views/Shared/_LayoutUser.cshtml";
+    BaoCaoWebNangCao.Models.WEBNANGCAOEntities1 db = new BaoCaoWebNangCao.Models.WEBNANGCAOEntities1();
+
 }
 
 <div class="container_fullwidth">
@@ -29,7 +31,20 @@
                                 <h4 class="productname">@item.TENCONGTHUC</h4>
                                 <h4 class="price">@item.NGAYDANGTAI</h4>
                                 <div class="button_group">
-                                    <button onclick="love()"  class="button wishlist" type="submit"><i  class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                    @{
+                                        int userId = (int)Session["id"];
+                                        var likedChecking = db.YEUTHICHes.FirstOrDefault(yt => yt.IDTAIKHOAN == userId && yt.IDCONGTHUC == item.ID);
+                                        if (likedChecking == null)
+                                        {
+                                            <button class="button wishlist" type="submit"><i  style="color: #FF4500"    class="fa-regular fa-heart"></i></button>
+
+                                        }
+                                        else
+                                        {
+                                            <button  class="button wishlist" type="submit"><i style="color: #FF4500"  class="fa-solid fa-heart"></i></button>
+
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -40,13 +55,15 @@
         </div>
 </div>
 <script>
-    function love() {
+    /*function love() {
         Swal.fire({
             position: "center",
             icon: "success",
             title: "Bạn vừa yêu thích một công thức mới!!",
             showConfirmButton: false,
-            timer: 1000000
+            timer: 1000
         });
-    }
+    }*/
+    
+}
 </script>

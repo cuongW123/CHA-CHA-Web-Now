@@ -23,6 +23,7 @@
 }
 .imgvstxt{
     display: flex;
+    width:100%;
 }
 .txt{
     margin: 0 25px 0 25px;
@@ -35,7 +36,7 @@
     /* border-style: dashed; */
 }
 .txtGrey{
-    color: #333;
+    color: black;
     width: 100%;
 }
 .txtGreyH{
@@ -60,5 +61,5 @@
 .btnMore:hover{
     background-color: #484848	;
     transition: scale(0.1,0.9);
-    color: white;
+    color: black;
 }

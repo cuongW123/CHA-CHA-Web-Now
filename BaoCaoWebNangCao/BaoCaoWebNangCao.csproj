@@ -3740,6 +3740,7 @@
     <Content Include="Areas\User\Data\images\slider-image-03.png" />
     <Content Include="Areas\User\Data\images\star.png" />
     <Content Include="Areas\User\Data\images\themeforest.png" />
+    <Content Include="Areas\User\Data\images\thuVienAll.jpg" />
     <Content Include="Areas\User\Data\images\twi.png" />
     <Content Include="Areas\User\Data\images\up-arow.png" />
     <Content Include="Areas\User\Data\js\bootstrap.min.js" />
