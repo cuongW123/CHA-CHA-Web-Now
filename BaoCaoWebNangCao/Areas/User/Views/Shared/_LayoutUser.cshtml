@@ -12,12 +12,15 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100' rel='stylesheet' type='text/css'>
     <link href="~/Areas/User/Data/css/font-awesome.min.css" rel="stylesheet">
     @*css*@
-    
+
     <link rel="stylesheet" href="~/Areas/User/Data/css/flexslider.css" type="text/css" media="screen" />
     <link href="~/Areas/User/Data/css/sequence-looptheme.css" rel="stylesheet" media="all" />
     @*css*@
     <link href="~/Areas/User/Data/css/style.css" rel="stylesheet">
+
     <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.~/Areas/User/Data/js/1.3.0/respond.min.js"></script><![endif]-->
+    @*new*@
+    @RenderSection("recipeCategoryStle", false)
 </head>
 <body id="home">
     <div class="wrapper">
@@ -172,61 +175,61 @@
         <div class="clearfix"></div>
         @*slide*@
         @*<div class="hom-slider">
-            <div class="container">
-                <div id="sequence">
-                    <div class="sequence-prev"><i class="fa fa-angle-left"></i></div>
-                    <div class="sequence-next"><i class="fa fa-angle-right"></i></div>
-                    <ul class="sequence-canvas">
-                        <li class="animate-in">
-                            <div class="flat-caption caption1 formLeft delay300 text-center"><span class="suphead">Paris show 2014</span></div>
-                            <div class="flat-caption caption2 formLeft delay400 text-center">
-                                <h1>Collection For Winter</h1>
-                            </div>
-                            <div class="flat-caption caption3 formLeft delay500 text-center">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                            </div>
-                            <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
-                            <div class="flat-image formBottom delay200" data-duration="5" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-01.png" alt=""></div>
-                        </li>
-                        <li>
-                            <div class="flat-caption caption2 formLeft delay400">
-                                <h1>Collection For Winter</h1>
-                            </div>
-                            <div class="flat-caption caption3 formLeft delay500">
-                                <h2>Etiam velit purus, luctus vitae velit sedauctor<br>egestas diam, Etiam velit purus.</h2>
-                            </div>
-                            <div class="flat-button caption5 formLeft delay600"><a class="more" href="#">More Details</a></div>
-                            <div class="flat-image formBottom delay200" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-02.png" alt=""></div>
-                        </li>
-                        <li>
-                            <div class="flat-caption caption2 formLeft delay400 text-center">
-                                <h1>New Fashion of 2013</h1>
-                            </div>
-                            <div class="flat-caption caption3 formLeft delay500 text-center">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                            </div>
-                            <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
-                            <div class="flat-image formBottom delay200" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-03.png" alt=""></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="promotion-banner">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-01.png" alt=""></div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-02.png" alt=""></div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-03.png" alt=""></div>
+                    <div id="sequence">
+                        <div class="sequence-prev"><i class="fa fa-angle-left"></i></div>
+                        <div class="sequence-next"><i class="fa fa-angle-right"></i></div>
+                        <ul class="sequence-canvas">
+                            <li class="animate-in">
+                                <div class="flat-caption caption1 formLeft delay300 text-center"><span class="suphead">Paris show 2014</span></div>
+                                <div class="flat-caption caption2 formLeft delay400 text-center">
+                                    <h1>Collection For Winter</h1>
+                                </div>
+                                <div class="flat-caption caption3 formLeft delay500 text-center">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                                </div>
+                                <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
+                                <div class="flat-image formBottom delay200" data-duration="5" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-01.png" alt=""></div>
+                            </li>
+                            <li>
+                                <div class="flat-caption caption2 formLeft delay400">
+                                    <h1>Collection For Winter</h1>
+                                </div>
+                                <div class="flat-caption caption3 formLeft delay500">
+                                    <h2>Etiam velit purus, luctus vitae velit sedauctor<br>egestas diam, Etiam velit purus.</h2>
+                                </div>
+                                <div class="flat-button caption5 formLeft delay600"><a class="more" href="#">More Details</a></div>
+                                <div class="flat-image formBottom delay200" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-02.png" alt=""></div>
+                            </li>
+                            <li>
+                                <div class="flat-caption caption2 formLeft delay400 text-center">
+                                    <h1>New Fashion of 2013</h1>
+                                </div>
+                                <div class="flat-caption caption3 formLeft delay500 text-center">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                                </div>
+                                <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
+                                <div class="flat-image formBottom delay200" data-bottom="true"><img src="~/Areas/User/Data/images/slider-image-03.png" alt=""></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="promotion-banner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-01.png" alt=""></div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-02.png" alt=""></div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="promo-box"><img src="~/Areas/User/Data/images/promotion-03.png" alt=""></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <div class="clearfix"></div>
         <div>
             @RenderBody()
@@ -285,7 +288,7 @@
         </div>
     </div>
     <!-- Bootstrap core JavaScript==================================================-->
-    
+
     <script type="text/javascript" src="~/Areas/User/Data/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="~/Areas/User/Data/js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="~/Areas/User/Data/js/bootstrap.min.js"></script>
@@ -293,5 +296,8 @@
     <script type="text/javascript" src="~/Areas/User/Data/js/jquery.carouFredSel-6.2.1-packed.js"></script>
     <script defer src="~/Areas/User/Data/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="~/Areas/User/Data/js/script.min.js"></script>
+    @*new*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

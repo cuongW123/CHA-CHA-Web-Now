@@ -15,11 +15,7 @@
         <div class="container">
             <div class="hot-products">
                 <h3 class="title"> Danh Sách <strong>Công Thức</strong></h3>
-
-                @*chinh sua tai khoan*@
                 <a href="@Url.Action("Index","TaiKhoan", new {area = "User", id = Session["id"] })">TaiKhoan</a>
-                @*<div class="control"><a id="prev_hot" class="prev" href="#">&lt;</a><a id="next_hot" class="next" href="#">&gt;</a></div>*@
-                @*công thức*@
             <div class="row">
                 @foreach (var item in Model)
                 {
@@ -33,7 +29,7 @@
                                 <h4 class="productname">@item.TENCONGTHUC</h4>
                                 <h4 class="price">@item.NGAYDANGTAI</h4>
                                 <div class="button_group">
-                                    <button  class="button wishlist" type="submit"><i  class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                    <button onclick="love()"  class="button wishlist" type="submit"><i  class="fa fa-heart-o" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -43,3 +39,14 @@
             </div>
         </div>
 </div>
+<script>
+    function love() {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Bạn vừa yêu thích một công thức mới!!",
+            showConfirmButton: false,
+            timer: 1000000
+        });
+    }
+</script>

@@ -4,60 +4,88 @@
     ViewBag.Title = "Cập Nhật Tài Khoản";
     Layout = "~/Areas/User/Views/Shared/_LayoutUser.cshtml";
 }
+
 <div class="container_fullwidth">
     <div class="container">
-        <h2>Thông Tin Tài Khoản</h2>
+        <div style="width: 100%; display: flex; justify-content: center;margin-bottom: 20px">
+            <h2 style="font-weight:bold"><b>Thông tin <b style="color: #FF4500">tài khoản</b></b></h2>
+
+        </div>
         <form action="/User/TaiKhoan/Edit/@Model.ID" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="@Model.ID" />
             <div class="row">
-                <div class="col-md-6">
-                    <label for="tendangnhap">Tên Đăng Nhập</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label style="margin-bottom:10px; " for="tendangnhap"><h5 style="font-weight: bold;">Tên Đăng Nhập</h5></label>
                     <input type="text" class="form-control" id="tendangnhap" name="tendangnhap" placeholder="" value="@Model.TENDANGNHAP" />
                 </div>
-                <div class="col-md-6">
-                    <label for="matkhau">Mật khẩu</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="matkhau"><h5 style="font-weight: bold;">Mật khẩu</h5></label>
                     <input type="text" class="form-control" id="matkhau" name="matkhau" placeholder="" value="@Model.MATKHAU" />
                 </div>
-                <div class="col-md-6">
-                    <label for="loaitaikhoan">Loại Tài Khoản</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="loaitaikhoan"><h5 style="font-weight: bold;">Loại tài khoản</h5></label>
                     <input type="text" class="form-control" id="loaitaikhoan" name="loaitaikhoan" placeholder="" value="@Model.LOAITAIKHOAN" />
                 </div>
-                <div class="col-md-6">
-                    <label for="tennguoidung">Tên Người Dùng</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="tennguoidung"><h5 style="font-weight: bold;">Tên người dùng</h5></label>
                     <input type="text" class="form-control" id="tennguoidung" name="tennguoidung" placeholder="" value="@Model.TENNGUOIDUNG" />
                 </div>
-                <div class="col-md-6">
-                    <label for="ngaysinh">Ngày Sinh</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="ngaysinh"><h5 style="font-weight: bold;">Ngày sinh</h5></label>
                     <input type="date" class="form-control" id="ngaysinh" name="ngaysinh" placeholder="" value="@Model.NGAYSINH.Value.ToString("yyyy-MM-dd")" />
                 </div>
-                <div class="col-md-6">
-                    <label for="diachi">Địa chỉ</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="diachi"><h5 style="font-weight: bold;">Địa chỉ</h5></label>
                     <input type="text" class="form-control" id="diachi" name="diachi" placeholder="" value="@Model.DIACHI" />
                 </div>
-                <div class="col-md-6">
-                    <label for="sodienthoai">Số Điện Thoại</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="sodienthoai"><h5 style="font-weight: bold;">Số điện thoại</h5></label>
                     <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="" value="@Model.SODIENTHOAI" />
                 </div>
-                <div class="col-md-6">
-                    <label for="email">Email</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="email"><h5 style="font-weight: bold;">Email</h5></label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="" value="@Model.EMAIL" />
                 </div>
-                <div class="col-md-6">
-                    <label for="gioitinh">Giới Tính</label>
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <label  style="margin-bottom:10px; " for="gioitinh"><h5 style="font-weight: bold;">Giới tính</h5></label>
                     <div>
-                        <input type="radio" name="gioitinh" value="Nam" checked="@(Model.GIOITINH == "Nam")" />Nam
-                        <input type="radio" name="gioitinh" value="Nữ" checked="@(Model.GIOITINH == "Nữ")" />Nữ
-                        <input type="radio" name="gioitinh" value="Khác" checked="@(Model.GIOITINH == "Khác")" />Khác
+                        <span style="margin-right:10px">
+                            <input type="radio" name="gioitinh" value="Nam" checked="@(Model.GIOITINH == "Nam")" /><span style="margin-left:5px">Nam</span>
+                        </span>
+                        <span>
+                            <input type="radio" name="gioitinh" value="Nữ" checked="@(Model.GIOITINH == "Nữ")" /><span  style="margin-left:5px">Nữ</span>
+                        </span>
+
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="hinhanh">Hình Ảnh</label>
+                </div >
+                <div style="margin-bottom:20px" class="col-md-6">
+                    <div style="display:flex; justify-content:center">
+                        <img src="@Model.HINHANH" style="width: 80px; height: 80px;border-radius:5px; margin:15px" />
+
+                    </div>
+                    <label style="margin-bottom:10px; " for="hinhanh"><h5 style="font-weight: bold;">Hình ảnh</h5></label>
                     <input type="file" class="form-control" id="hinhanh" name="hinhanh" placeholder="" value="@Model.HINHANH" />
 
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Sửa</button>
-            <a href="@Url.Action("Index","TaiKhoan",new {area="User"})" class="btn btn-danger">Trở về</a>
+            <div class="col-md-12" style="display:flex;justify-content:space-around">
+                <button style="background-color: #FF4500; color: white" type="submit" class=" custom-btn">Sửa</button>
+                <button style="color: white; background-color: #FF4500 " href="@Url.Action("Index","TaiKhoan",new {area="User"})" class=" custom-btn">Trở về</button>
+            </div>
         </form>
     </div>
 </div>
+
+<script>
+    let inputFile = document.querySelector('#hinhanh');
+    let img = inputFile.parentElement.querySelector('img');
+
+    inputFile.onchange = (e) => {
+        if (inputFile.files[0]) {
+            img.src = URL.createObjectURL(inputFile.files[0]);
+        }
+    }
+
+
+
+</script>

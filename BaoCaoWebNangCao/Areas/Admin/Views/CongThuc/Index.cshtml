@@ -62,7 +62,7 @@
                 <input type="text" class="form-control" id="search" name="search" placeholder="Tên công thức">
             </div>
 
-            <table id="cthuc" class=" table  table-hover border-opacity-10 ">
+            <table id="example" class=" table  table-hover border-opacity-10 ">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -95,7 +95,6 @@
                             @* <td><a title="Chi tiết" id="btn-detail-@item.ID" class="btn " data-toggle="modal" data-target="#modal-detail" data-id="@item.ID" style="background-color: #8540F5; color: #ffffff "><i class="fas fa-clipboard-list"></i></a></td>*@
                             <td><a title="Sửa" class="btn " style="background-color: #6610F2; color: #ffffff " href="@Url.Action("Edit","CongThuc", new {area="Admin", id = item.ID})"><i class="fas fa-edit"></i></a></td>
                             <td><a onclick="onDeleteCT(@item.ID)" id="btn-xoa" title="Xóa" class="btn " style="background-color: #520DC2; color: #ffffff "><i class="fas fa-trash-alt"></i></a></td>
-
                         </tr>
                     </tbody>
                 }
@@ -170,10 +169,9 @@
             $.ajax({
                 url: '@Url.Action("LoadTable", "CongThuc", new { area = "Admin" })',
                 type: 'GET',
-
                 data: {search:search },
                 success: function(response) {
-                    $('#cthuc').html(response.congthucs);
+                    $('#example').html(response.congthucs);
                 },
                 error: function() {
                     modal.find('.modal-body').html('<p>Error loading details. Please try again.</p>');
